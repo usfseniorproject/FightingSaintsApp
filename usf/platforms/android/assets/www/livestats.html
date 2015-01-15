@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Roster</title>
+<link rel="stylesheet" href="stylesheet.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<link rel="stylesheet" href="jquery.mobile.structure-1.2.0.min.css">
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+        
+<body style ="background-color:#afafaf;hidden overflow;right: -30px;border:0;">
+        <div data-role="page" id="livestats" data-theme="a" style="background-color:#afafaf;border:0;">
+
+        
+        	<div data-role="header"style="width:100%;padding-left:20px;position:fixed;top:10;z-index:1;left:0;background-color:background-color:#FFFFFF;
+                    " >
+                   <a href="index.html" style="background-color:#edb12d;text-shadow:none;color:white;margin-left:-20;border:none;">Back</a>
+                    
+   				<h1 style="margin-right:38%;">Live Stats</h1>
+   
+			</div> <!--End of Header-->
+   			<div data-role="content" style="margin-top:10%;border:0;">
+         <script src="kyle.js"></script>
+         <script src="livestats.js"></script>
+<script>
+localStorage["count"] = "0";
+
+        </script> 
+        
+		 <script>
+		 
+		 // Hide the scoreboards initially
+		 
+		 $('#outerWrapper').hide(); 
+		 $('#outerWrapper1').hide();
+		 $('#gamechoice').hide();
+		// $('#scoreboard').show();
+		
+		checkForGamesToday(); // See if there are any games today 
+		
+		// This function alternates scoreboards when the user taps on them
+		
+		$(document).ready(function(){
+	/*
+		$( "#SportTitle" ).on('click',function() {
+			
+			var zindex = $(this).zIndex();
+			alert("clicked first");
+			if(zindex == "1"){
+				$(this).css("zIndex",0);
+				$('#outerWrapper1').css("zIndex",1);
+				}
+			if(zindex == "0"){
+				$(this).css("zIndex",1);
+				$('#outerWrapper1').css("zIndex",0);
+				}
+		});
+		$( "#SportTitle1" ).on('click',function() {
+			alert("clicked second");
+			var zindex = $(this).zIndex();
+			
+			if(zindex == "1"){
+				$(this).css("zIndex",0);
+				$('#outerWrapper').css("zIndex",1);
+				}
+			if(zindex == "0"){
+				$(this).css("zIndex",1);
+				$('#outerWrapper').css("zIndex",0);
+				}
+		});
+		*/
+		//$('#gametwo').css('background-color','#918f8f');
+		$("#gameone").on('click',function() {
+			//alert("clicked g1");
+			$('#outerWrapper').show(); 
+			$('#outerWrapper1').hide(); 
+			$('#gameone').css('background-color','#918f8f');
+			$('#gametwo').css('background-color','#767676');
+		});
+		$("#gametwo").on('click',function() {
+			//alert("clicked g2");
+			$('#outerWrapper1').show(); 
+			$('#outerWrapper').hide(); 
+			
+			//$('#scoreboard1').css('margin-top','0%');
+			$('#gametwo').css('background-color','#918f8f');
+			$('#gameone').css('background-color','#767676');
+			$('#outerWrapper1').show(); 
+		});
+		
+	});
+	
+          </script>
+          <style>
+         .baseball{
+			
+	}
+	</style>
+    			<center>  
+                  <div id="gamechoice" style="border-radius:15px;width:200px;height:35px;background-color:#767676;margin-top:5%;color:white;font-size:14px;text-shadow:none;border-style:solid;border-color:white;">
+                      <div id="gameone" style="width:100px;height:35px;float:left;clear:right;border-top-left-radius:14px;border-bottom-left-radius:14px;background-color:#918f8f;"><p style="margin-top:8%;">Game One</p></div>
+                      <div id="gametwo" style="width:97px;height:35px;float:left;margin-right:-20%;border-left-style:solid;border-left-color:#FFFFFF;border-top-right-radius:12px;border-bottom-right-radius:12px;"><p style="margin-top:9%;">Game Two</p></div>
+                  </div>
+              </center>
+    <!--First Scoreboard-->
+    		<div id="scoreboardHolder" style="margin-top:7%;height:500px;">
+    				  <div id="nogames"><center><h2 style="color:#7a7777">No Games Today</h2></center></div>
+    				  <div id="outerWrapper" style="position:relative;height:500px;">
+                    <div id="SportTitle" style="margin-top:5%;background-color:#654631;width:97%;border-radius:15px;border:5px solid white;box-shadow:2.5px 0px 15px #403f3f inset;height:65px;margin-left:0%;font-family:Tahoma;"><center><p style= "color:white;margin-top:2%;text-shadow:none;font-size:24px;" id="sportTitleText"></p><center><p style= "color:white;margin-top:-8%;text-shadow:none;font-size:16px;" id="sportStartTime"></p></center></div>
+                    <div id="scoreboard" style="background-color:#654631;border:5px solid white;margin-left:0%;border-radius:25px;margin-top:-11%;width:97%;height:220px;box-shadow:2.5px 0px 15px #403f3f;">
+                    	<center><p style="color:white;text-shadow:2px 2px #000000;font-size:14px;margin-top:5%;" id="scoreboardTitle"></p><center>
+                      <div id="scoreHolder" style="width:100%;height:65px;margin-top:0%;background-color:#ecb03d;font-family:Times New Roman;">
+                    	<div id="homeScore" style="background-color:white;color:black;font-size:40px;height:100%;width:25%;float:left;margin-left:21%;"><center><p style= "margin-top:14%;" id="hscore"></p></center></div><div id="awayScore" style="background-color:white;color:black;font-size:40px;height:100%;width:25%;float:right;margin-right:20%;"><center><p style="margin-top:14%;" id="vscore"></p></center></div>
+                      </div>
+                      
+    <!--Second Scoreboard-->
+    
+                      <center><p style="color:white;text-shadow:2px 2px #000000;font-size:14px;margin-top:5%;" id="gameTime"></p><details style="margin-top:-4%;"><summary id="breakdownTitle" style="color:white;font-size:14px;text-shadow:none;">Boxscore</summary><p id="label" style="color:white;text-shadow:none;font-size:14px;margin-top:0%;"></p><p id="home" style="color:white;font-size:14px;margin-top:-7%;text-shadow:none;margin-left:0.5%;"></p><p id="away" style="margin-top:-7%;margin-left:1.5%;color:white;font-size:14px;text-shadow:none;"></p></details></center>
+                    </div>
+                    </div>
+                    <div id="outerWrapper1" style="position:relative;height:500px;">
+                    <div id="SportTitle1" style="margin-top:5%;background-color:#654631;width:97%;border-radius:15px;border:5px solid white;box-shadow:2.5px 0px 15px #403f3f inset;height:65px;margin-left:0%;font-family:Tahoma;"><center><p style= "color:white;margin-top:2%;text-shadow:none;font-size:24px;" id="sportTitleText1"></p><center><p style= "color:white;margin-top:-8%;text-shadow:none;font-size:16px;" id="sportStartTime1"></p></center></div>
+                    <div id="scoreboard1" style="background-color:#654631;border:5px solid white;margin-left:0%;border-radius:25px;margin-top:-11%;width:97%;height:220px;box-shadow:2.5px 0px 15px #403f3f;">
+                    	<center><p style="color:white;text-shadow:2px 2px #000000;font-size:14px;margin-top:5%;" id="scoreboardTitle1"></p><center>
+                      <div id="scoreHolder1" style="width:100%;height:65px;margin-top:0%;background-color:#ecb03d;font-family:Times New Roman;">
+                    	<div id="homeScore1" style="background-color:white;color:black;font-size:40px;height:100%;width:25%;float:left;margin-left:21%;"><center><p style= "margin-top:14%;" id="hscore1"></p></center></div><div id="awayScore1" style="background-color:white;color:black;font-size:40px;height:100%;width:25%;float:right;margin-right:20%;"><center><p style="margin-top:14%;" id="vscore1"></p></center></div>
+                      </div>
+                      
+                      <center><p style="color:white;text-shadow:2px 2px #000000;font-size:14px;margin-top:5%;" id="gameTime1"></p><details style="margin-top:-4%;"><summary id="breakdownTitle1" style="color:white;font-size:14px;text-shadow:none;">Boxscore</summary><p id="label1" style="color:white;text-shadow:none;font-size:14px;margin-top:0%;"></p><p id="home1" style="color:white;font-size:14px;margin-top:-7%;text-shadow:none;margin-left:0.5%;"></p><p id="away1" style="margin-top:-7%;margin-left:1.5%;color:white;font-size:14px;text-shadow:none;"></p></details></center>
+                    </div>
+                    </div>
+  				</div>
+              
+  		    </div> <!--End of Content-->
+          
+   <div data-role="footer" style="border:0;">
+	<footer style="bottom:0;left:0;margin-top:135.9%;position:fixed;width:100%;background-color:#edb12e;">
+    
+       
+      <a href="rosters.html" data-transition="slide"><img src="img/roster.jpg" width=20% style="float:left;clear:right;padding-left:6%;"></a>
+      <a href="gymschedule.html" data-transition="slide"><img src="img/info.jpg" width=20%  style="float:left;clear:right;padding-left:3%;"></a>
+      <a href="calendar.html" data-transition="slide"><img src="img/schedule.jpg" width=20%  style="float:left;clear:right;padding-left:5%;"></a>
+     <a href="livestats.html" data-transition="slide"><img src="img/livestats.jpg" width=20% style="float:left;clear:right;padding-left:3%;"></a>
+</footer>
+	</div><!--End of Footer -->
+</div><!--End of Page -->
+       
+        
+        
+    </body>
+</html>

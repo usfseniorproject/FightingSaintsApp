@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>USF Athletics</title>
+
+
+<meta name="viewport"width=device-width />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="jquery.mobile.structure-1.2.0.min.css">
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+
+</head>
+<!--<script> document.addEventListener("deviceready", onDeviceReady, false);</script>
+<script>  function onDeviceReady() {
+                                                          
+      
+    }</script>-->
+
+<style>
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 15ms;
+}
+</style>
+<body style="background-color:#472d16;" onload="getAjax();">
+<div data-role="page" data-shadow="false" id ="homepage" style="background-color:#edb12d;" >
+<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-2%;background-color:#edb12e;box-shadow:2.5px 0px 30px #403f3f;" >
+    </br>
+    	<img src="img/header1.jpg" width="100%" id="headerpic" height="50%"  alt="" style="padding-right:50%;float:left;margin-left:0;margin-top:-6.5%;">
+</div>
+<div data-role="content" style="background-color:#edb12d;padding-top:-1%;margin-top:36.5%;">
+
+<script src="kyle.js"></script>
+<script src="localdb_news.js"></script>
+<script>
+
+$.ajaxSetup ({
+// Disable caching of AJAX responses
+cache: false
+});
+
+init();
+function getAjax(){
+		
+		var content = document.getElementById("content");
+	
+		var output = "";
+		
+		kyle.getNews(
+		{
+			
+			success: function(json)
+			{
+				console.log(json);
+				var oid = localStorage["news_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+					 
+					var title = json[i]["Title"];
+					var articleBody = json[i]["Body"];
+					var articleSport = json[i]["Sport"];
+					switch(json[i]["Sport"]){
+						case '1':
+						articleSport = "Men's Basketball";
+						break;
+						case '5':	
+						articleSport = "Football";
+						break;
+						case '3':
+						articleSport = "Baseball";
+						break;
+						case '2':
+						articleSport = "Women's Basketball";
+						break;
+						case '7':
+						articleSport = "Men's Soccer";
+						break;
+						case '14':
+						articleSport = "Women's Soccer";
+						break;
+						case '11':
+						articleSport = "Softball";
+						break;
+						case '18':
+						articleSport = "Volleyball";
+						break;
+						}
+					
+					var picLink = json[i]["Photo_url"];
+					var picCaption= json[i]["Photo_caption"];
+					output += "<tr onclick='showNews(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='news'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:14px;text-shadow:none;color:black; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space:nowrap;'>" + title + "</p></td></a></tr>";
+					//alert(output);
+				
+					localStorage["output"]=output;
+					addNews(title,articleBody,articleSport,picLink,picCaption);
+					
+				
+					//addNews(title,articleBody,articleSport,picLink,picCaption);
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				
+				
+				 
+				 }
+				
+				 var outputting = document.getElementById('news');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve News Articles");
+			}
+		});
+		}
+	
+</script>
+<script>
+          getAjax();
+function showNews(id){
+						localStorage["news_id"] = id;
+						//$.mobile.changePage('getNews.html', { transition: 'pop', role: 'dialog'});
+						$(':mobile-pagecontainer').pagecontainer( "change", "getNews.html", { role: "dialog" });
+
+					}
+</script>   
+<div id="newsHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;margin-left:-9%;height:370px;">
+<table style="margin-left:0%;width:127%;width:100%;font-size:20px;margin-top:-4%;background-color:#453120" id="news">
+                  
+</table>
+ </div>                     
+ <!--
+ <div id = "scoreboard" style="width:100%;height:30%;padding-top:35%;padding-left:0%;">
+ 		<div id="homescore" style="width:20%;height:50px;float:left;clear:right;background-color:#edb12e;"><div style="margin-top:-16px;"><p style="color:white;text-shadow:none;padding-bottom:50px;padding-left:15px;font-size:24px;">33</p></div></div>
+     	<div id="teams" style="float:left;clear:right;background-color:white;width:60%;height:50px;"><p style="color:black;margin-left:7px;font-size:13.5px;">St. Francis V.S. St. Xavier</p></div>
+       <div id="awayscore" style="width:20%;height:50px;float:left;background-color:#edb12e;"><div style="margin-top:-16px;"><p style="color:white;text-shadow:none;font-size:24px;padding-left:15px;"><span style="margin-bottom:-40px;">20</span></p></div></div>
+    	<div id="timeremaining" style="width:100%;"></div>
+  </div>
+   -->
+</div>
+<div data-role="footer" style="border:0;background-color:#472d16;">
+<footer style="margin-top:-5%;background-color:#472d16;border:0;">
+    
+      <a href="rosters.html" data-transition="slide"><img src="img/roster.jpg" width=20% style="float:left;clear:right;padding-left:6%;"></a>
+    <img src="img/info.jpg" width=20%  style="float:left;clear:right;padding-left:3%;">
+      <a href="calendar.html" data-transition="slide"><img src="img/schedule.jpg" width=20%  style="float:left;clear:right;padding-left:5%;"></a>
+     <a href="livestats.html" data-transition="slide"><img src="img/livestats.jpg" width=20% style="float:left;clear:right;padding-left:3%;"></a>
+</footer>
+</div>
+</div>
+</body>
+</html>

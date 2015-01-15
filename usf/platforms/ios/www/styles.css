@@ -1,0 +1,37 @@
+
+@media (max-width: 1080px){ 
+    #headerpic{
+		height: 15% !important;
+		margin-top:5% !important;
+		}
+	table{
+		margin-top:-3% !important;
+		height:480px !important;
+		
+	}
+	#mugshot{
+		max-height:230px !important;
+	}
+	#usf{
+		width: 360px;
+		margin-top: -5%;
+	}
+	.agenda .event-links{
+		color:white !important;
+	}
+	
+}
+
+
+@media only screen 
+and (max-device-height : 480px) 
+{
+ 
+	footer{
+		background-color:white;
+		}
+	#rosterHolder{
+		background-color:white;
+		height:370px !important;
+		}
+}
