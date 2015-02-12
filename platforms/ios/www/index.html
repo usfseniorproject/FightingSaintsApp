@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -32,13 +32,24 @@
     -webkit-animation-duration: 15ms;
 }
 </style>
+
 <body style="background-color:#472d16;" onload="getAjax();">
-<div data-role="page" data-shadow="false" id ="homepage" style="background-color:#edb12d;" >
-<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-2%;background-color:#edb12e;box-shadow:2.5px 0px 30px #403f3f;" >
-    </br>
-    	<img src="img/header1.jpg" width="100%" id="headerpic" height="50%"  alt="" style="padding-right:50%;float:left;margin-left:0;margin-top:-6.5%;">
+<div data-role="page" data-shadow="false" id ="homepage" style="background-color:#edb32e;" >
+<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+	<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 25%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
+	<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
 </div>
-<div data-role="content" style="background-color:#edb12d;padding-top:-1%;margin-top:36.5%;">
+
+<div data-role="panel" id="menupanel" data-theme="b" style="position:absolute;">
+	<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+		<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster2.jpg" width=20% style="float:left;">Sports Rosters</a>
+    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info2.jpg" width=20%  style="float:left;">Gym Schedule</a>
+    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule2.jpg" width=19%  style="float:left;">Calender</a>
+    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats2.jpg" width=21% style="float:left;">Live Stats</a>
+	</div>
+</div>
+
+<div data-role="content" style="background-color:#453120;padding-top:-1%;margin-top:29.4%;">
 
 <script src="kyle.js"></script>
 <script src="localdb_news.js"></script>
@@ -199,20 +210,8 @@ function showNews(id){
 
 					}
 </script>   
-<div id="newsHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;margin-left:-9%;height:370px;">
-<table style="margin-left:0%;width:127%;width:100%;font-size:20px;margin-top:-4%;background-color:#453120" id="news">
-                  
-</table>
-
-<div data-role="footer" style="border:0;background-color:#472d16;">
-<footer style="bottom:0;left:0;margin-top:135.9%;position:fixed;width:100%;background-color:#edb12e;box-shadow:2.5px 0px 30px #403f3f;">
-    
-      <a href="rosters.html" data-transition="slide"><img src="img/roster.jpg" width=20% style="float:left;clear:right;padding-left:6%;"></a>
-      <a href="gymschedule.html" data-transition="slide"><img src="img/info.jpg" width=20%  style="float:left;clear:right;padding-left:3%;"></a>
-      <a href="calendar.html" data-transition="slide"><img src="img/schedule.jpg" width=20%  style="float:left;clear:right;padding-left:5%;"></a>
-     <a href="livestats.html" data-transition="slide"><img src="img/livestats.jpg" width=20% style="float:left;clear:right;padding-left:3%;"></a>
-</footer>
-</div>
-</div>
+	<div id="newsHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;margin-left:-9%;height:100%;">
+		<table style="margin-left:0%;width:127%;width:100%;font-size:20px;margin-top:-4%;background-color:#453120" id="news"></table>
+	</div>
 </body>
 </html>
