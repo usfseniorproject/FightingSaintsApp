@@ -28,11 +28,11 @@
 </style>
 
 <body style="background-color:#472d16;" onload="getAjax();">
-	<div data-role="page" data-shadow="false" id ="homepage" style="background-color:#edb32e;" >
+	<div data-role="page" data-shadow="false" id ="homepage" style="background-color:#edb32e;width:100%;height:100%;" >
 		
 		<!--Contains the header picture and the button to access the slide out navigation panel-->
 		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
-			<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
+			<a href="#menupanel" onclick='#' class="menuButton" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
 			<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
 		</div>
 		
@@ -48,13 +48,15 @@
 		</div>
 		
 		<!--Page Content, includes scripts to load news articles-->
-		<div data-role="content" style="background-color:#453120;padding-top:-1%;margin-top:29.4%;">
+		<div data-role="content" style="background-color:#453120;padding-top:-1%;margin-top:29.4%;width:100%;height:100%;">
 			<script src="kyle.js"></script>
+            <script src="js/clickEvents.js"></script>
 			<script src="localdb_news.js"></script>
 			<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 			<script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
 			<script src="js/aws-sdk-2.0.0-rc.14.min.js"></script>
 			<script>
+			
 			var pushNotification;
 			document.addEventListener("deviceready", function(){
 				pushNotification = window.plugins.pushNotification;
@@ -166,7 +168,7 @@
 								
 								var picLink = json[i]["Photo_url"];
 								var picCaption= json[i]["Photo_caption"];
-								output += "<tr onclick='showNews(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='news'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:14px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space:nowrap;'>" + title + "</p></td></a></tr>";
+								output += "<tr onclick='showNews(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='news'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16;font-family:superclare;font-size:14px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='width:80%'>" + title + "</p></td></a></tr>";
 								//alert(output);
 							
 								localStorage["output"]=output;
@@ -181,8 +183,10 @@
 							 
 							 }
 							
-							 var outputting = document.getElementById('news');
-					   		 outputting.innerHTML = localStorage["output"];
+							 //var outputting = document.getElementById('news');
+							 $('#news').html(localStorage["output"]);
+							 $('#news').fadeIn("slow");
+					   		 //outputting.innerHTML = localStorage["output"];
 						},
 						error: function()
 						{
@@ -209,8 +213,8 @@
 								}
 			</script>
 			<!--News display section-->
-			<div id="newsHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;margin-left:-9%;height:100%;">
-				<table style="margin-left:0%;width:127%;width:100%;font-size:20px;margin-top:-4%;background-color:#453120" id="news"></table>
+			<div id="newsHolder" style="overflow-x:hidden;overflow-y:scroll;width:100%;margin-left:-5%;height:100%;height: 100%;margin-top:-4.4%;">
+				<table style="margin-left:0%;width:100%;width:100%;font-size:20px;margin-top:-4%;background-color:#edb32e;display:none;" id="news"></table>
 			</div>
 		</div>
 	</div>

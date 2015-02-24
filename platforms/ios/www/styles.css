@@ -1,3 +1,10 @@
+/*
+	Global Styles
+*/
+
+-webkit::scrollbar{
+	width:0;
+}
 
 @media (max-width: 1080px){ 
     #headerpic{
@@ -5,7 +12,7 @@
 		margin-top:5% !important;
 		}
 	table{
-		margin-top:-3% !important;
+		margin-top:0% !important;
 		height:480px !important;
 		
 	}
