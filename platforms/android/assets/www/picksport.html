@@ -12,16 +12,15 @@
 
 <script src="jquery-1.9.1.min.js"></script>
 <script src="jquery.mobile-1.4.0.min.js"></script>
-<script src="kyle.js"></script>
 
 <body style ="background-color:#edb32e;hidden overflow;right: -30px;">
-	<div data-role="page" id="roster" data-theme="a">
+	<div data-role="page" id="roster" data-theme="a" style ="background-color:#edb32e;">
         
 		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
-			<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 25%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
+			<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
 			<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
 		</div>
-
+		
 		<div data-role="panel" id="menupanel" data-theme="b" style="position:absolute;">
 			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
 				<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster2.jpg" width=20% style="float:left;">Sports Rosters</a>
@@ -30,43 +29,13 @@
 		    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats2.jpg" width=21% style="float:left;">Live Stats</a>
 			</div>
 		</div>
-        
-        <div data-role="content" style="margin-top:25%;">
-           <style>
-				table tr{height:3%;}
-				table td{padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb32e; font-size:15px;text-shadow:none;color:white; width:100%;}
-			</style>
-           <script>
-
-					$(document).ready(function () {
-						 $("#categoryTypes tr").click(function(e) {
-					e.preventDefault();
-					//localStorage["delete_id2"] = $(this).children('td').attr('id');
-					var category = $(this).attr('class');
-					localStorage["parameter"] = category;
-					//alert("Clicked Category:" + category);
-					 //alert($(this).children('td').attr('id'));
-					$.mobile.changePage('rosters.html', { transition: 'flip', role: 'page' });
-					
-					});
-					
-					});
-			</script>
-    <div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;height:100%;margin-left:-9%;">
- 				 <table style="width:127%;height:200px;font-size:13px;margin-top:-5.75%;background-color:#edb32e;" id="categoryTypes">
-                    <tbody>
-                    <tr class="MSports"><td class="MSports" style="background-color:#453120;"><span>Men's Sports</span></td></tr>                   
-                    <tr class="WSports"><td class="WSports" style="background-color:#453120;"><span>Women's Sports</span></td></tr>
-                    <tr class="CESports"><td class="MSports" style="background-color:#453120;"><span>Co-Ed Sports</span></td></tr>
-                    </tbody>
-                </table>
-                    
-  		</div>
-  		    </div> <!--End of Content-->
-          
-   </div><!--End of Page -->
-       
-        
-        
-    </body>
+		
+		<div>
+			<a href="rosters.html" class="ui-btn" data-transition="slide" style="line-height: 625%;margin-top: 30.5%;background-color:#472d16;border-width: 0px;color:white;text-shadow: 0px 1px 0px #0E0C0C;">Men's Sports</a>
+			<a href="rosters.html" class="ui-btn" data-transition="slide" style="line-height: 625%;background-color:#472d16;border-width: 0px;color:white;text-shadow: 0px 1px 0px #0E0C0C;">Women's Sports</a>
+			<a href="rosters.html" class="ui-btn" data-transition="slide" style="line-height: 625%;margin-bottom: -3%;background-color:#472d16;border-width: 0px;color:white;text-shadow: 0px 1px 0px #0E0C0C;">Co-ed Sports</a>
+		</div>
+		
+		</div><!--End of Page -->      
+	</body>
 </html>

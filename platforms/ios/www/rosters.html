@@ -14,22 +14,32 @@
 <script src="jquery.mobile-1.4.0.min.js"></script>
 <script src="kyle.js"></script>
 
-<body style ="background-color:#b5a901;hidden overflow;right: -30px;
+<body style ="background-color:#472d16;hidden overflow;right: -30px;
         ">
         <div data-role="page" id="roster" data-theme="a">
 
         
-        	<div data-role="header"style="width:100%;padding-left:20px;position:fixed;top:10;z-index:1;left:0;background-color:background-color:#FFFFFF;
-                    " >
-                   <a href="index.html" style="background-color:#edb12d;text-shadow:none;color:white;margin-left:-20;border:none;">Back</a>
-                    
-   				<h1 style="margin-right:38%;">Rosters</h1>
-   
-			</div> <!--End of Header-->
-   			<div data-role="content" style="margin-top:10%;">
+			<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+				<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
+				<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
+			</div>
+			
+			<div data-role="panel" id="menupanel" data-theme="b" style="position:absolute;">
+				<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+					<a href="index.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
+					<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.jpg" width=20% style="float:left;">Sports Rosters</a>
+			    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info.jpg" width=20%  style="float:left;">Gym Schedule</a>
+			    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.jpg" width=19%  style="float:left;">Calender</a>
+			    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.jpg" width=21% style="float:left;">Live Stats</a>
+				</div>
+			</div>
+			
+			
+			
+   			<div data-role="content" style="margin-top:10%;background-color: #472d16;">
            <style>
 				table tr{height:3%;}
-				table td{padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-size:15px;text-shadow:none;color:white; width:100%;}
+				table td{padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-size:15px;text-shadow:none;color:white; width:100%;}
 			</style>
            <script>
 
@@ -47,8 +57,8 @@
 					
 					});
 			</script>
-    <div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;height:457px;margin-left:-9%;">
- 				 <table style="width:127%;height:200px;font-size:13px;margin-top:-5.75%;background-color:#453120;" id="sportTypes">
+    <div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;height:457px;margin-left:-9%;margin-top: 20%">
+ 				 <table style="width:127%;height:200px;font-size:13px;margin-top:-5.75%;background-color:#edb32e;" id="sportTypes">
                     <tbody>
                     <tr class="MBasketball"><td class="MBasketball"><span>Men's Basketball</span></td></tr>                   
                     <tr class="WBasketball"><td class="WBasketball"><span>Women's Basketball</span></td></tr>
@@ -64,17 +74,7 @@
   		</div>
   		    </div> <!--End of Content-->
           
-   <div data-role="footer">
-	<footer style="bottom:0;left:0;margin-top:135.9%;position:fixed;width:100%;background-color:#edb12e;">
-    
-     
-      <a href="picksport.html" data-transition="slide"><img src="img/roster.jpg" width=20% style="float:left;clear:right;padding-left:6%;"></a>
-      <a href="gymschedule.html" data-transition="slide"><img src="img/info.jpg" width=20%  style="float:left;clear:right;padding-left:3%;"></a>
-      <a href="calendar.html" data-transition="slide"><img src="img/schedule.jpg" width=20%  style="float:left;clear:right;padding-left:5%;"></a>
-      <a href="livestats.html" data-transition="slide"><img src="img/livestats.jpg" width=20% style="float:left;clear:right;padding-left:3%;"></a>
-	</footer>
-	</div><!--End of Footer -->
-</div><!--End of Page -->
+   </div><!--End of Page -->
        
         
         

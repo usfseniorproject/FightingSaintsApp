@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -15,16 +15,25 @@
         <div data-role="page" id="livestats" data-theme="a" style="background-color:#afafaf;border:0;">
 
         
-        	<div data-role="header"style="width:100%;padding-left:20px;position:fixed;top:10;z-index:1;left:0;background-color:background-color:#FFFFFF;
-                    " >
-                   <a href="index.html" style="background-color:#edb12d;text-shadow:none;color:white;margin-left:-20;border:none;">Back</a>
-                    
-   				<h1 style="margin-right:38%;">Live Stats</h1>
-   
-			</div> <!--End of Header-->
-   			<div data-role="content" style="margin-top:10%;border:0;">
-         <script src="kyle.js"></script>
-         <script src="livestats.js"></script>
+<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:2.5%;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+	<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
+	<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 99;">
+</div>
+
+<div data-role="panel" id="menupanel" data-theme="b" style="position:absolute;">
+	<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+		<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster2.jpg" width=20% style="float:left;">Sports Rosters</a>
+    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info2.jpg" width=20%  style="float:left;">Gym Schedule</a>
+    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule2.jpg" width=19%  style="float:left;">Calender</a>
+    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats2.jpg" width=21% style="float:left;">Live Stats</a>
+	</div>
+</div>
+			
+			
+			
+<div data-role="content" style="margin-top:10%;border:0;">
+<script src="kyle.js"></script>
+<script src="livestats.js"></script>
 <script>
 localStorage["count"] = "0";
 
@@ -100,7 +109,7 @@ localStorage["count"] = "0";
 	}
 	</style>
     			<center>  
-                  <div id="gamechoice" style="border-radius:15px;width:200px;height:35px;background-color:#767676;margin-top:5%;color:white;font-size:14px;text-shadow:none;border-style:solid;border-color:white;">
+                  <div id="gamechoice" style="border-radius:15px;width:200px;height:35px;background-color:#767676;margin-top:17%;color:white;font-size:14px;text-shadow:none;border-style:solid;border-color:white;">
                       <div id="gameone" style="width:100px;height:35px;float:left;clear:right;border-top-left-radius:14px;border-bottom-left-radius:14px;background-color:#918f8f;"><p style="margin-top:8%;">Game One</p></div>
                       <div id="gametwo" style="width:97px;height:35px;float:left;margin-right:-20%;border-left-style:solid;border-left-color:#FFFFFF;border-top-right-radius:12px;border-bottom-right-radius:12px;"><p style="margin-top:9%;">Game Two</p></div>
                   </div>
@@ -136,17 +145,7 @@ localStorage["count"] = "0";
               
   		    </div> <!--End of Content-->
           
-   <div data-role="footer" style="border:0;">
-	<footer style="bottom:0;left:0;margin-top:135.9%;position:fixed;width:100%;background-color:#edb12e;">
-    
-       
-      <a href="picksport.html" data-transition="slide"><img src="img/roster.jpg" width=20% style="float:left;clear:right;padding-left:6%;"></a>
-      <a href="gymschedule.html" data-transition="slide"><img src="img/info.jpg" width=20%  style="float:left;clear:right;padding-left:3%;"></a>
-      <a href="calendar.html" data-transition="slide"><img src="img/schedule.jpg" width=20%  style="float:left;clear:right;padding-left:5%;"></a>
-     <a href="livestats.html" data-transition="slide"><img src="img/livestats.jpg" width=20% style="float:left;clear:right;padding-left:3%;"></a>
-</footer>
-	</div><!--End of Footer -->
-</div><!--End of Page -->
+   </div><!--End of Page -->
        
         
         

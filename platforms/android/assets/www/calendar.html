@@ -21,29 +21,27 @@
 
 <body  style="background-color:#472d16;">
 <div data-role="page" data-shadow="false" id ="calendar" style="background-color:#472d16;">
-<div data-role="header"style="width:100%;padding-left:20px;position:fixed;top:10;z-index:1;left:0;background-color:background-color:#FFFFFF;
-                    " >
-                   <a href="index.html" style="background-color:#edb12d;text-shadow:none;color:white;margin-left:-20;border:none;">Back</a>
-                    
-    <h1 style="margin-left:20%;width:50%;" id ="rosterHeader">Calendar of Events</h1>
-   
+
+<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+	<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
+	<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
+</div>
+
+<div data-role="panel" id="menupanel" data-theme="b" style="position:absolute;">
+	<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+		<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster2.jpg" width=20% style="float:left;">Sports Rosters</a>
+    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info2.jpg" width=20%  style="float:left;">Gym Schedule</a>
+    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule2.jpg" width=19%  style="float:left;">Calender</a>
+    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats2.jpg" width=21% style="float:left;">Live Stats</a>
 	</div>
+</div>	
+	
 <div data-role="content" style="background-color:#472d16;margin-left:-10%;">
 
 <!--iFrame from Google Calendar-->
 
 <iframe id="usf" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=1000&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=g1j42if3cpaajg4ja118kdf5tjuqa63a%40import.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FChicago" style=" border-width:0 " width="10" height="1000" frameborder="0" scrolling="no" seamless ></iframe>
 	
-</div>
-<div data-role="footer" style="border:0;">
-<footer style="bottom:0;left:0;margin-top:135.9%;position:fixed;width:100%;background-color:#edb12e;box-shadow:2.5px 0px 30px #403f3f;">
-    
-  
-      <a href="rosters.html" data-transition="slide"><img src="img/roster.jpg" width=20% style="float:left;clear:right;padding-left:6%;"></a>
-      <a href="gymschedule.html" data-transition="slide"><img src="img/info.jpg" width=20%  style="float:left;clear:right;padding-left:3%;"></a>
-      <a href="calendar.html" data-transition="slide"><img src="img/schedule.jpg" width=20%  style="float:left;clear:right;padding-left:5%;"></a>
-     <a href="livestats.html" data-transition="slide"><img src="img/livestats.jpg" width=20% style="float:left;clear:right;padding-left:3%;"></a>
-</footer>
 </div>
 </div>
 </body>
