@@ -12,26 +12,27 @@
 <script src="jquery.mobile-1.4.0.min.js"></script>
         
 <body style ="background-color:#afafaf;hidden overflow;right: -30px;border:0;">
-        <div data-role="page" id="livestats" data-theme="a" style="background-color:#afafaf;border:0;">
+	<div data-role="page" id="livestats" data-theme="a" style="background-color:#afafaf;border:0;">
         
-			<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:2.5%;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
-				<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
-				<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 99;">
-			</div>
+		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:2.5%;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+			<img src="img/menuicon.png" class="menuButton" style="position:absolute;left: 10%;top: 22%;width:20%;"/>
+			<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 99;">
+		</div>
 			
-			<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;">
-				<div class="panel-content" style="padding: 1em;margin-top: -12%;">
-					<a href="index.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
-					<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.jpg" width=20% style="float:left;">Sports Rosters</a>
-			    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info.jpg" width=20%  style="float:left;">Gym Schedule</a>
-			    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.jpg" width=19%  style="float:left;">Calender</a>
-			    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.jpg" width=21% style="float:left;">Live Stats</a>
-				</div>
+		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;">
+			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+				<a href="index.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
+				<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.jpg" width=20% style="float:left;">Sports Rosters</a>
+			    <a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info.jpg" width=20%  style="float:left;">Gym Schedule</a>
+			    <a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.jpg" width=19%  style="float:left;">Calender</a>
+			    <a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.jpg" width=21% style="float:left;">Live Stats</a>
 			</div>
+		</div>
 			
 <div data-role="content" style="margin-top:10%;border:0;">
 <script src="kyle.js"></script>
 <script src="livestats.js"></script>
+<script src="js/clickEvents.js"></script>
 <script>
 localStorage["count"] = "0";
 
