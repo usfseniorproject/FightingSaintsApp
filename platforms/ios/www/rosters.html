@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -16,12 +16,14 @@
 
 <body style ="background-color:#472d16;hidden overflow;right: -30px;">
 	<div data-role="page" id="roster" data-theme="a">
-
+	
+		<!--Header containing the header picture and the button to bring out the panel-->
 		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
 			<img src="img/menuicon.png" class="menuButton" style="position:absolute;left: 10%;top: 22%;width:20%;"/>
 			<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
 		</div>
-			
+		
+		<!--Panel with navigation links-->
 		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;">
 			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
 				<a href="homepage.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
@@ -32,14 +34,16 @@
 			</div>
 		</div>
 			
-   		<div data-role="content" style="margin-top:10%;background-color: #472d16;">
+   		<div data-role="content" style="margin-top:10%;background-color: #472d16;height:100%">
    			<script src="js/clickEvents.js"></script>
    			
+   			<!--Stylization for the roster table-->
         	<style>
 				table tr{height:3%;}
 				table td{padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-size:15px;text-shadow:none;color:white; width:100%;}
 			</style>
 			
+			<!--Script for the click event when someone chooses a sport, redirects to the appropriate team page-->
         	<script>
 					$(document).ready(function () {
 						 $("#sportTypes tr").click(function(e) {
@@ -55,32 +59,33 @@
 					
 					});
 			</script>
-    		<div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:127%;height:457px;margin-left:-9%;margin-top: 20%">
- 				 <table style="width:127%;height:200px;font-size:13px;margin-top:-5.75%;background-color:#edb32e;" id="sportTypes">
+			
+			<!--Table with holder for each of the sports in the current roster-->
+    		<div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:115%;height:100%;margin-left:-6.5%;margin-top: 20%">
+ 				 <table style="width:115%;height:100%;font-size:13px;margin-top:-5.75%;background-color:#edb32e;" id="sportTypes">
                     <tbody>
-	                    <tr class="Baseball" style="display:none;"><td class="Baseball"><span>Baseball</span></td></tr>
-	                    <tr class="MBasketball" style="display:none;"><td class="MBasketball"><span>Men's Basketball</span></td></tr>                   
-	                    <tr class="WBasketball" style="display:none;"><td class="WBasketball"><span>Women's Basketball</span></td></tr>
-	                    <tr class="MBowling"style="display:none;"><td class="MBowling"><span>Men's Bowling</span></td></tr>
-						<tr class="WBowling"style="display:none;"><td class="WBowling"><span>Women's Bowling</span></td></tr>
-						<tr class="MCrossCountry"style="display:none;"><td class="MCrossCountry"><span>Men's Cross Country</span></td></tr>
-	                    <tr class="WCrossCountry"style="display:none;"><td class="WCrossCountry"><span>Women's Cross Country</span></td></tr>
-	                    <tr class="Football"style="display:none;"><td class="Football"><span>Football</span></td></tr>
-	                    <tr class="MGolf"style="display:none;"><td class="MGolf"><span>Men's Golf</span></td></tr>
-	                    <tr class="WGolf"style="display:none;"><td class="WGolf"><span>Women's Golf</span></td></tr>
-	                    <tr class="MSoccer"style="display:none;"><td class="MSoccer"><span>Men's Soccer</span></td></tr>
-	                    <tr class="WSoccer"style="display:none;"><td class="WSoccer"><span>Women's Soccer</span></td></tr>
-	                    <tr class="Softball"style="display:none;"><td class="Softball"><span>Softball</span></td></tr>
-	                    <tr class="MTennis"style="display:none;"><td class="MTennis"><span>Men's Tennis</span></td></tr>
-	                    <tr class="WTennis"style="display:none;"><td class="WTennis"><span>Women's Tennis</span></td></tr>
-	                    <tr class="MTrack"style="display:none;"><td class="MTrack"><span>Men's Track</span></td></tr>
-	                    <tr class="WTrack"style="display:none;"><td class="WTrack"><span>Women's Track</span></td></tr>
-	                    <tr class="Volleyball"style="display:none;"><td class="Volleyball"><span>Volleyball</span></td></tr>
-	                    <tr class="Cheerleading"style="display:none;"><td class="Cheerleading"><span>Cheerleading</span></td></tr>
+	                    <tr class="Baseball"><td class="Baseball" style=""><span>Baseball</span></td></tr>
+	                    <tr class="MBasketball"><td class="MBasketball"><span>Men's Basketball</span></td></tr>                   
+	                    <tr class="WBasketball"><td class="WBasketball"><span>Women's Basketball</span></td></tr>
+	                    <tr class="MBowling"><td class="MBowling"><span>Men's Bowling</span></td></tr>
+						<tr class="WBowling"><td class="WBowling"><span>Women's Bowling</span></td></tr>
+						<tr class="MCrossCountry"><td class="MCrossCountry"><span>Men's Cross Country</span></td></tr>
+	                    <tr class="WCrossCountry"><td class="WCrossCountry"><span>Women's Cross Country</span></td></tr>
+	                    <tr class="Football"><td class="Football"><span>Football</span></td></tr>
+	                    <tr class="MGolf"><td class="MGolf"><span>Men's Golf</span></td></tr>
+	                    <tr class="WGolf"><td class="WGolf"><span>Women's Golf</span></td></tr>
+	                    <tr class="MSoccer"><td class="MSoccer"><span>Men's Soccer</span></td></tr>
+	                    <tr class="WSoccer"><td class="WSoccer"><span>Women's Soccer</span></td></tr>
+	                    <tr class="Softball"><td class="Softball"><span>Softball</span></td></tr>
+	                    <tr class="MTennis"><td class="MTennis"><span>Men's Tennis</span></td></tr>
+	                    <tr class="WTennis"><td class="WTennis"><span>Women's Tennis</span></td></tr>
+	                    <tr class="MTrack"><td class="MTrack"><span>Men's Track</span></td></tr>
+	                    <tr class="WTrack"><td class="WTrack"><span>Women's Track</span></td></tr>
+	                    <tr class="Volleyball"><td class="Volleyball"><span>Volleyball</span></td></tr>
+	                    <tr class="Cheerleading"><td class="Cheerleading"><span>Cheerleading</span></td></tr>
                     </tbody>
-                </table>
-                    
-  			</div>
+                </table> 
+  			</div><!--End of Table-->
 		</div> <!--End of Content-->
 	</div><!--End of Page -->     
 </body>
