@@ -39,7 +39,7 @@
 		</div>
 		
 		<!--Navigation panel and the links it contains-->
-		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;" data-display="overlay">
+		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;z-index: 99" data-display="overlay">
 			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
 				<a href="homepage.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
 				<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.jpg" width=20% style="float:left;">Sports Rosters</a>
@@ -50,15 +50,36 @@
 		</div>
 		
 		<!--Page Content, includes scripts to load news articles-->
+		<img src="img/fade.jpg" class="dimmer" style="position:absolute;opacity: .6;z-index:-10"/>
+		<img src="img/swipe.png" class="swipePic" style="position:absolute;left: 20%;top: 37%;width:30%;z-index:-10"/>
+		
 		<div data-role="content" style="background-color:#472d16;padding-top:-1%;margin-top:29.4%;width:100%;height:100%;">
 			<script src="kyle.js"></script>
-            <script src="js/clickEvents.js"></script>
+            <script src="js/panelEvents.js"></script>
 			<script src="localdb_news.js"></script>
 			<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 			<script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
 			<script src="js/aws-sdk-2.0.0-rc.14.min.js"></script>
 			<script>
 			
+			if(localStorage.getItem("firstTime") === null){
+				openTut();
+				
+				setTimeout(function(){
+					tutorial();
+				}, 2000);
+				
+				setTimeout(function(){
+					tutorial();
+				}, 7000);
+				
+				setTimeout(function(){
+					closeTut();
+				}, 11000);
+				
+				localStorage["firstTime"] = "no";
+			}
+									
 			var pushNotification;
 			document.addEventListener("deviceready", function(){
 				pushNotification = window.plugins.pushNotification;
