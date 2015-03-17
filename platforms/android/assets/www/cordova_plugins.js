@@ -27,6 +27,14 @@ module.exports = [
         "merges": [
             "navigator.notification"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -34,7 +42,8 @@ module.exports.metadata =
 {
     "org.apache.cordova.device": "0.2.14-dev",
     "com.phonegap.plugins.PushPlugin": "2.4.0",
-    "org.apache.cordova.dialogs": "0.2.12-dev"
+    "org.apache.cordova.dialogs": "0.2.12-dev",
+    "org.apache.cordova.inappbrowser": "0.6.1-dev"
 }
 // BOTTOM OF METADATA
 });

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		16FBC88D8EBC4CFCB60C5B33 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = AE02354FCC6A471EA77FCBD0 /* CDVNotification.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -46,6 +45,7 @@
 		D499095785844C7D8B906ABF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E08282A47548BBAF8B8135 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		FC0B392C5DD9423C98E5099A /* PushPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA71C82A10E4E28B211926B /* PushPlugin.m */; };
+		01B74227236842888AD8B028 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CC368E8E3D644B6ADA5CDED /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +119,8 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "USF Athletics/config.xml"; sourceTree = "<group>"; };
+		3CC368E8E3D644B6ADA5CDED /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		74C266C40C0740AFB2877B7E /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "org.apache.cordova.inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,8 @@
 				6A8A31D799FB410497B4FD15 /* PushPlugin.h */,
 				AE02354FCC6A471EA77FCBD0 /* CDVNotification.m */,
 				30C03415C6A94AB8BF42224E /* CDVNotification.h */,
+				3CC368E8E3D644B6ADA5CDED /* CDVInAppBrowser.m */,
+				74C266C40C0740AFB2877B7E /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "USF Athletics/Plugins";
@@ -417,6 +421,7 @@
 				306B8B9466514274A83864AC /* AppDelegate+notification.m in Sources */,
 				FC0B392C5DD9423C98E5099A /* PushPlugin.m in Sources */,
 				16FBC88D8EBC4CFCB60C5B33 /* CDVNotification.m in Sources */,
+				01B74227236842888AD8B028 /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

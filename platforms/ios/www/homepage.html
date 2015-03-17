@@ -54,7 +54,7 @@
 		<img src="img/swipe.png" class="swipePic" style="position:absolute;left: 20%;top: 37%;width:30%;z-index:-10"/>
 		
 		<div data-role="content" style="background-color:#472d16;padding-top:-1%;margin-top:29.4%;width:100%;height:100%;">
-			<script src="kyle.js"></script>
+			<script src="js/SportsAPI.js"></script>
             <script src="js/panelEvents.js"></script>
 			<script src="localdb_news.js"></script>
 			<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
@@ -85,8 +85,9 @@
 				pushNotification = window.plugins.pushNotification;
 			}); 
 			
-			AWS.config.accessKeyId = 'AKIAJEHNHKQZ67D36V5A';
-			AWS.config.secretAccessKey = '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';
+			AWS.config.accessKeyId = localStorage["aki"];
+			AWS.config.secretAccessKey = localStorage["sk"];
+			AWS.config.sessionToken = localStorage["st"];
 			AWS.config.region = 'us-east-1';
 			var sns = new AWS.SNS();		
 			
@@ -149,7 +150,7 @@
 				
 					var output = "";
 					
-					kyle.getNews(
+					SportsAPI.getNews(
 					{
 						
 						success: function(json)

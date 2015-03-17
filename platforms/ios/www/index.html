@@ -1,4 +1,5 @@
-<!doctype html><head>
+<!doctype html>
+	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>USF Athletics</title>
         <link rel="stylesheet" href="jquery/jquery.mobile.structure-1.4.5.css">
@@ -141,18 +142,10 @@ background-repeat:no-repeat;background-position:44% 50%;background-size: cover !
 			   		function login(){
 						var lock = null;
 						$(document).ready(function() {
-						   lock = new Auth0Lock('bvuwP8zyXNAI8GwmDlkWhXshsPUxCh5B', 'bondappdev.auth0.com');
-						   /* $('#a0-lock .a0-footer a').attr("href","");
-							$('#a0-lock #a0-header h1').eq(0).text("USF Events App");
-							$('#a0-lock #a0-avatar').html("");
-							$('#a0-lock #a0-avatar').css("background-image","url('https://s3.amazonaws.com/bondappdev/usfeventsappicon.png')");
-							$('#a0-lock #a0-avatar').css("background-size","100%");
-							*/
+						   lock = new Auth0Lock('be7aXwUINP6jB1oBCBPpUmW7CvNiWtIm', 'bondappdev.auth0.com');
 						});
 						
 						var userProfile;
-					   
-						
 						lock.show(function(err, profile, token) {
 							if (err) {
 								
@@ -171,20 +164,16 @@ background-repeat:no-repeat;background-position:44% 50%;background-size: cover !
 							  // Save the profile
 							  
 							  userProfile = profile;
-							  var email = userProfile.email.toUpperCase();
-							  localStorage["email"] = email;
-							  localStorage["FirstName"] = userProfile.nickname;
 							  
 							  var auth0 = new Auth0({
 								domain:         "bondappdev.auth0.com",
-								clientID:       "bvuwP8zyXNAI8GwmDlkWhXshsPUxCh5B",
+								clientID:       "be7aXwUINP6jB1oBCBPpUmW7CvNiWtIm",
 								callbackURL:    'dummy'
 							  });
 							 
 								
-							    var aws_arns = { role: 'arn:aws:iam::370339223087:role/FoxRiverApp', principal: 	'arn:aws:iam::370339223087:saml-provider/Auth0-Authentication' };
-							  	auth0.getDelegationToken("bvuwP8zyXNAI8GwmDlkWhXshsPUxCh5B", token, aws_arns, function(err, result) {
-  								
+							    var aws_arns = { role: 'arn:aws:iam::370339223087:role/USFAthletics', principal: 	'arn:aws:iam::370339223087:saml-provider/Auth0-Authentication' };
+							  	auth0.getDelegationToken("be7aXwUINP6jB1oBCBPpUmW7CvNiWtIm", token, aws_arns, function(err, result) {
 								var aws_credentials = result.Credentials; // AWS temp credentials
 								localStorage["ex"]= aws_credentials.Expiration;
 								AWS.config.accessKeyId = aws_credentials.AccessKeyId;
@@ -194,53 +183,17 @@ background-repeat:no-repeat;background-position:44% 50%;background-size: cover !
 								AWS.config.sessionToken = aws_credentials.SessionToken;
 								localStorage["st"] = aws_credentials.SessionToken;
 								AWS.config.update({ region: 'us-east-1' });
-							  	table = new AWS.DynamoDB({params: {TableName: 'FoxRiver_Accounts'}});
-								
-								
-								table.scan({AttributesToGet:['FirstName','LastName','Role','MemberID','Verified','Arn'],ScanFilter:{Email:{ComparisonOperator:'EQ', AttributeValueList:[{S:email}]}}},function(err,data){		
-								if(err){
-									console.log(err);
-									navigator.notification.alert("Error logging in, please try again.");
+							  	table = new AWS.DynamoDB({params: {TableName: 'AppServers'}});
+								table.getItem({Key: {ServerID: {S:'0'}}}, function(err, data) {
+									if(err){
+										alert(err);	
 									}
-								console.log(data);
-								if(data.Items.length==0){
-									$('#registerOverlay').fadeIn("slow");
-									}
-								else{
-									 localStorage["FirstName"] = data.Items[0].FirstName.S;
-									 localStorage["Role"] = data.Items[0].Role.S;
-									 localStorage["MemberID"] = data.Items[0].MemberID.S;
-									
-									 localStorage["LastName"] = data.Items[0].LastName.S;
-									 try{
-									 	localStorage["ARN"] = data.Items[0].Arn.S;
-									 }
-									 catch(e){
-									 }
-									 
-									 var verified = data.Items[0].Verified.S;
-									 if(verified == "1"){
-										$.mobile.changePage('index2.html', { transition: 'none', role: 'page' });
-									 }
-									 else{
-										navigator.notification.alert("Your Account Is Pending Admin Verification");
-										 }
+									else{
+										localStorage["ServerAddress"] = data.Item.ServerAddress.S;
+										$.mobile.changePage('homepage.html', { transition: 'none', role: 'page' });
 									}
 								});
 							});
-							
-							  /*AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-						      RoleArn: 'arn:aws:iam::370339223087:role/Cognito_FoxRiverAppAuth_Role',
-							  RoleSessionName: 'Testing',
-							  IdentityPoolId: 'us-east-1:8881b605-96ff-49b7-9b0b-71c4ab1f679c',
-							  Logins: { 
-								'bondappdev.auth0.com': token
-							  }
-							 
-							  });
-							  */
-										
-							  
 							}
 						});
 					}

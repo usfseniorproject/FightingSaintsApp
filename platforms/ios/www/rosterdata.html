@@ -39,7 +39,7 @@
 			<script src="js/panelEvents.js"></script>
 		  	<script src="localdb.js"></script>
 		  	<script>init();</script>
-		  	<script src="kyle.js"></script>
+		  	<script src="js/SportsAPI.js"></script>
 		   	<script>
 	  
 			/*
@@ -145,7 +145,7 @@
 					//alert(sport);
 					var output = "";
 					if(sport=="MBasketball"){
-					kyle.getMensBasketball(
+					SportsAPI.getMensBasketball(
 					{
 						
 						success: function(json)
@@ -195,7 +195,7 @@
 					});
 					}
 								if(sport == "WBasketball"){
-									kyle.getWomensBasketball(
+									SportsAPI.getWomensBasketball(
 					{
 						
 						success: function(json)
@@ -243,7 +243,7 @@
 					});
 									}
 								if(sport == "MSoccer"){
-									kyle.getMensSoccer(
+									SportsAPI.getMensSoccer(
 					{
 						
 						success: function(json)
@@ -291,7 +291,7 @@
 					});
 									}
 								if(sport == "WSoccer"){
-									kyle.getWomensSoccer(
+									SportsAPI.getWomensSoccer(
 					{
 						
 						success: function(json)
@@ -339,7 +339,7 @@
 					});
 									}
 								if(sport == "Volleyball"){
-									kyle.getWomensVolleyball(
+									SportsAPI.getWomensVolleyball(
 					{
 						
 						success: function(json)
@@ -388,7 +388,7 @@
 									}
 								if(sport == "Softball"){
 									
-									kyle.getWomensSoftball(
+									SportsAPI.getWomensSoftball(
 					{
 						
 						success: function(json)
@@ -436,7 +436,7 @@
 					});
 									}
 								if(sport == "Baseball"){
-									kyle.getMensBaseball(
+									SportsAPI.getMensBaseball(
 					{
 						
 						success: function(json)
@@ -484,7 +484,7 @@
 					});
 									}
 								if(sport == "Football"){
-									kyle.getMensFootball(
+									SportsAPI.getMensFootball(
 					{
 						
 						success: function(json)
