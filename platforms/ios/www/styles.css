@@ -1,9 +1,13 @@
-/*
+﻿/*
 	Global Styles
 */
 
 -webkit::scrollbar{
 	width:0;
+}
+		
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {
+	height:100% !important;
 }
 
 @media (max-width: 1080px){ 
