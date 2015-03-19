@@ -144,6 +144,20 @@
 					//if(sport == "Mbasketball"){
 					//alert(sport);
 					var output = "";
+					if(sport == "MBowling"){
+						alert("Entered");
+						SportsAPI.getMensBowlingRoster({
+							success: function(json)
+							{
+								console.log(json);
+							},
+							error: function()
+							{
+								alert("Failed To Retrieve Roster Data");
+							}
+							
+						});
+					}
 					if(sport=="MBasketball"){
 					SportsAPI.getMensBasketball(
 					{
@@ -540,9 +554,9 @@
 			$(document).one('pageshow', "#rosterdata",function () {
 					   pickSport();
 					   var sport = localStorage["parameter"];
-					   var name = localStorage["sportName"];
-					   var header = document.getElementById('rosterHeader');
-					   header.innerHTML = name;
+					   //var name = localStorage["sportName"];
+					   //$('#rosterHeader').html(name);
+					   
 					   
 			          getAjax(sport);
 					  

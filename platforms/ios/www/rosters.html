@@ -52,8 +52,7 @@
 					var sport = $(this).find("td").attr('class');
 					alert(sport);
 					localStorage["parameter"] = sport;
-					//alert("Clicked Sport:" + sport);
-					 //alert($(this).children('td').attr('id'));
+					localStorage["sportName"] = $(this).find("td").text();
 					$.mobile.changePage('rosterdata.html', { transition: 'slide', role: 'page' });
 					
 					});
