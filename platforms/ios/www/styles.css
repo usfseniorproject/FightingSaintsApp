@@ -10,6 +10,10 @@
 	height:100% !important;
 }
 
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {
+	height:100% !important;
+}
+
 @media (max-width: 1080px){ 
     #headerpic{
 		height: 15% !important;

@@ -13,7 +13,7 @@
 </head>
 
 	<div id = "viewPlayer" data-role="page" style="background-color:#472d16;">
-
+		<!--Header, consists of player name and number-->
 		<div data-role="header" data-theme="e" style="background-color:#edb32e;color:white;text-shadow:none;">
 			<center><h4 id="headerText" style="width:200px;margin-bottom:15px;margin-top:10px;"></h4></center>
 		</div>
@@ -99,6 +99,7 @@
 				}	
 			</script>
           
+          <!--Player information-->
            <center>
            		<img id="mugshot" src="" border="5" height="50%" width="50%"style="border-color:white;border-radius:15px;box-shadow:0px 0px 5px #000000;">
            		<p id="ClassName" style="color:black;text-shadow:none;">Class:</p>
@@ -107,12 +108,14 @@
               	<p id="Hometown"  style="color:black;text-shadow:none;">Hometown:</p>
            <center>
          	
+         	<!--Grabs the information and inserts into the placeholders on the page-->
           	<div id="innerContent" style="font-size:17px;color:black;text-shadow:none;">
             	<script>
 					initGet();
 				</script>
           	</div>
-      
+      		
+      		<!--Done Button-->
 			<a href="homepage.html" data-role="button" id = "done" data-rel="back" data-theme="c">Done</a>
 		</div>
 	</div>

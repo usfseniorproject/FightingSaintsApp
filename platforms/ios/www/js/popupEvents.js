@@ -1,4 +1,8 @@
-function playTut() {
+// Replays the tutorial animations when the button selected on the about popup.
+$('#replayTut').on('click',function(){
+
+	$( '.menupanel' ).panel( "close" );
+	
 	openTut();
 				
 	setTimeout(function(){
@@ -12,4 +16,4 @@ function playTut() {
 	setTimeout(function(){
 		closeTut();
 	}, 11000);
-	});
+});
