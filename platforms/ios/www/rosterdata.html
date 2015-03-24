@@ -35,7 +35,7 @@
 			</div>
 		</div>
 			    
-		<div data-role="content" style="margin-top:26%;height:100%;background-color:#472d16">
+		<div data-role="content" style="margin-top:24.5%;height:100%;background-color:#472d16">
 			<script src="js/panelEvents.js"></script>
 		  	<script src="localdb.js"></script>
 		  	<script>init();</script>
@@ -127,8 +127,6 @@
 									localStorage["sportName"] = "Cheerleading";
 									localStorage["tableName"] = "cheerleading";
 									}
-									
-						 
 				}
 			
 			/*
@@ -140,16 +138,44 @@
 				{
 					
 					var content = document.getElementById("content");
-					
-					//if(sport == "Mbasketball"){
-					//alert(sport);
 					var output = "";
 					if(sport == "MBowling"){
-						alert("Entered");
 						SportsAPI.getMensBowlingRoster({
 							success: function(json)
 							{
 								console.log(json);
+								var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+								 
+								var pname = json[i]["Name"];
+								var pnumber = json[i]["Number"];
+								var cname = json[i]["Class"];
+								var htown= json[i]["Hometown"];
+								var picLink = json[i]["Picture"];
+								addRoster(pname,pnumber,cname,"","",cname,oid,htown,picLink);
+								
+								var className = "";
+								if(json[i]["Class"] == "SR"){
+									className = "Senior";
+									}
+								if(json[i]["Class"] == "JR"){
+									className = "Junior";
+									}
+								if(json[i]["Class"] == "SO"){
+									className = "Sophomore";
+									}
+								if(json[i]["Class"] == "FR"){
+									className = "Freshmen";
+									}
+								 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
+								// alert(output);
+								 localStorage["output"]=output;
+								 
+								 }
+								 //alert(localStorage["output"]);
+								 var outputting = document.getElementById('roster');
+								 outputting.innerHTML = localStorage["output"];
 							},
 							error: function()
 							{
@@ -584,7 +610,7 @@
 								
 			</script>
 	                    
-	        <table style="margin-left:-9%;width:127%;height:100%;font-size:20px;margin-top:-5%;background-color:#edb32e" id="roster"></table>
+	        <table style="margin-left:-9%;width:127%;height:100%;font-size:20px;margin-top:-5%;background-color:#000000" id="roster"></table>
 		</div>
 	</div>
 </body>

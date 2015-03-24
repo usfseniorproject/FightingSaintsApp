@@ -47,16 +47,12 @@
         	<script>
 					$(document).ready(function () {
 						 $("#sportTypes tr").click(function(e) {
-					e.preventDefault();
-					//localStorage["delete_id2"] = $(this).children('td').attr('id');
-					var sport = $(this).find("td").attr('class');
-					alert(sport);
-					localStorage["parameter"] = sport;
-					localStorage["sportName"] = $(this).find("td").text();
-					$.mobile.changePage('rosterdata.html', { transition: 'slide', role: 'page' });
-					
-					});
-					
+							e.preventDefault();
+							var sport = $(this).find("td").attr('class');
+							localStorage["parameter"] = sport;
+							localStorage["sportName"] = $(this).find("td").text();
+							$.mobile.changePage('rosterdata.html', { transition: 'slide', role: 'page' });
+						});
 					});
 										
 					$(document).ready(function(){

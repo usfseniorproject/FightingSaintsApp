@@ -15,6 +15,8 @@ Rosters.webdb.createTable = function (){
 	var db = Rosters.webdb.db;
 	
 	db.transaction(function(e) {
+	var query = "DROP TABLE IF EXISTS m_bowling";
+    e.executeSql(query);
 	var query = "DROP TABLE IF EXISTS m_basketball";
     e.executeSql(query);
 	var query = "DROP TABLE IF EXISTS w_basketball";
@@ -33,6 +35,7 @@ Rosters.webdb.createTable = function (){
     e.executeSql(query);
 	
 	
+	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS m_basketball(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS w_basketball(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS m_soccer(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
@@ -63,8 +66,16 @@ Rosters.webdb.addRoster = function (pname,pnumber,cname,pos,pheight,pweight,oid,
 	var hometown = htown;
 	var ourid = oid;
 	var tableName = localStorage["tableName"]
-
 	
+	if(tableName == "m_bowling"){
+		console.log("Adding things to the database");
+		db.transaction(function(e){
+			e.executeSql("INSERT INTO m_bowling(Name,Player_Number,Class_Name,Hometown,OurID,picLink) VALUES (?,?,?,?,?,?)",
+				[name,player_number,class_name,hometown,ourid,picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
+			});	
+	}
 	if(tableName == "m_basketball"){
 	db.transaction(function(e){
 		
@@ -139,8 +150,6 @@ Rosters.webdb.addRoster = function (pname,pnumber,cname,pos,pheight,pweight,oid,
 	}
 	if(tableName == "football"){
 	db.transaction(function(e){
-		
-		
 		e.executeSql("INSERT INTO football(Name,Player_Number,Class_Name,Position,Height,Weight,Hometown,OurID,picLink) VALUES (?,?,?,?,?,?,?,?,?)",
 			[name,player_number,class_name,position,height,weight,hometown,ourid,picLink],
 			Rosters.webdb.onSuccess,
@@ -186,10 +195,7 @@ Rosters.webdb.createTable();
 	This function calls the addRoster function.
 */
 function addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink) {
-
-//var prayers = document.getElementById("prayers");
-Rosters.webdb.addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
-//prayers.value = "";
+	Rosters.webdb.addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
 }
 
 	
