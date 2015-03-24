@@ -46,6 +46,7 @@
 		    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info.jpg" width=20%  style="float:left;">Gym Schedule</a>
 		    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.jpg" width=19%  style="float:left;">Calender</a>
 		    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.jpg" width=21% style="float:left;">Live Stats</a>
+		    	<a href="#aboutPopup" data-rel="popup" class="ui-btn" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/about.png" width=18% style="float:left;">About App</a>
 			</div>
 		</div>
 		
@@ -60,6 +61,20 @@
 			<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 			<script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
 			<script src="js/aws-sdk-2.0.0-rc.14.min.js"></script>
+	
+			<div data-role="popup" id="aboutPopup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+			    <div data-role="header" data-theme="a">
+			    	<h1>About</h1>
+			    </div>
+			    <div role="main" class="ui-content">
+			    	<p>Property of the USF Athetic Department of the University of Saint Francis in Joliet, Illinois.</p>
+			    	<p>If you missed the swipe tutorial and would like to play it again, press the button below.</p>
+			        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Replay Tutorial</a>
+					<p>Developed by USF Computer Science students.</p>
+			        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" style="width: 40%;">Close</a>
+			    </div>
+			</div>
+						
 			<script>
 			
 			if(localStorage.getItem("firstTime") === null){

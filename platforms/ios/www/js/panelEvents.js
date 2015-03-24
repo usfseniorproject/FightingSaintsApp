@@ -1,4 +1,4 @@
-$('.menuButton').on('tap',function(){
+$('.menuButton').on('click',function(){
 	$('.menupanel').panel("open");
 });
 
