@@ -1,0 +1,265 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>USF Athletics</title>
+
+<meta name="viewport" content="width=device-width, user-scalable=noinitial-scale=1"/>
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="jquery.mobile.structure-1.2.0.min.css">
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+</head>
+<!--<script> document.addEventListener("deviceready", onDeviceReady, false);</script>
+<script>  function onDeviceReady() {}</script>-->
+<style type="text/css">
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Disable selection/copy in UIWebView */
+}
+</style>
+<style>
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 15ms;
+}
+</style>
+
+<!-- As a not for the entire app, the hex code for the color scheme are as follows: Yellow/Orange = #edb32e and Brown = #472d16 -->
+
+<body style="background-color:#472d16;" onload="getAjax();">
+	<div data-role="page" data-shadow="false" id ="homepage" style="background-color:#edb32e;width:100%;height:100%;" >
+		
+		<!--Contains the header picture and the button to access the slide out navigation panel-->
+		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+			<img src="img/menuicon.png" class="menuButton" style="position:absolute;left: 10%;top: 22%;width:20%;"/>
+			<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
+		</div>
+		
+		<!--Navigation panel and the links it contains, script contained in panelEvents.js-->
+		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;z-index: 99" data-display="overlay">
+			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+				<a href="homepage.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
+				<a href="rostertype.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.jpg" width=20% style="float:left;">Sports Rosters</a>
+		    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info.jpg" width=20%  style="float:left;">Gym Schedule</a>
+		    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.jpg" width=19%  style="float:left;">Calender</a>
+		    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.jpg" width=21% style="float:left;">Live Stats</a>
+		    	<a href="#aboutPopup" data-rel="popup" class="ui-btn" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/about.png" width=18% style="float:left;">About App</a>
+			</div>
+			
+			<!--"About App" Popup Content, scripts contained in popupEvents.js-->
+			<div data-role="popup" id="aboutPopup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+			    <div data-role="header" data-theme="a">
+			    	<h1>About</h1>
+			    </div>
+			    <div role="main" class="ui-content">
+			    	<p>Property of the USF Athetic Department of the University of Saint Francis in Joliet, Illinois.</p>
+			    	<p>If you missed the swipe tutorial and would like to play it again, press the button below.</p>
+			        <a id="replayTut" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Replay Tutorial</a>
+					<p>Developed by USF Computer Science students.</p>
+			        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" style="width: 40%;">Close</a>
+			    </div>
+			</div>
+		</div>
+		
+		<!--Page Content, includes scripts to load news articles-->
+		<img src="img/fade.jpg" class="dimmer" style="position:absolute;opacity: .6;z-index:-10"/>
+		<img src="img/swipe.png" class="swipePic" style="position:absolute;left: 20%;top: 37%;width:30%;z-index:-10"/>
+		
+		<div data-role="content" style="background-color:#472d16;padding-top:-1%;margin-top:29.4%;width:100%;height:100%;">
+			<script src="js/SportsAPI.js"></script>
+            <script src="js/panelEvents.js"></script>
+            <script src="js/popupEvents.js"></script>
+			<script src="localdb_news.js"></script>
+			<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+			<script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
+			<script src="js/aws-sdk-2.0.0-rc.14.min.js"></script>
+			
+									
+			<script>
+			
+			if(localStorage.getItem("firstTime") === null){
+				openTut();
+				
+				setTimeout(function(){
+					tutorial();
+				}, 2000);
+				
+				setTimeout(function(){
+					tutorial();
+				}, 7000);
+				
+				setTimeout(function(){
+					closeTut();
+				}, 11000);
+				
+				localStorage["firstTime"] = "no";
+			}
+									
+			var pushNotification;
+			document.addEventListener("deviceready", function(){
+				pushNotification = window.plugins.pushNotification;
+			}); 
+			
+			AWS.config.accessKeyId = localStorage["aki"];
+			AWS.config.secretAccessKey = localStorage["sk"];
+			AWS.config.sessionToken = localStorage["st"];
+			AWS.config.region = 'us-east-1';
+			var sns = new AWS.SNS();		
+			
+			window.setTimeout(function(){
+				if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
+						pushNotification.register(successHandler, errorHandler, {"senderID":"1090696343696","ecb":"onNotification"});		// 
+					} 
+					else {
+						console.log("TRYING TO REGISTER FOR PUSH");
+						pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	
+				}
+			},7000);
+			
+			function tokenHandler (result) {
+			   console.log("TOKEN");
+			   alert(result);
+			    var params = {
+				  PlatformApplicationArn: 'arn:aws:sns:us-east-1:370339223087:app/APNS_SANDBOX/USF_Athletics', // required
+				  Token: result // required
+				};
+				sns.createPlatformEndpoint(params, function(err, data) {
+								  if (err) {
+									  console.log("CAN'T CREATE PLATFORM ENDPOINT");
+									  console.log(err, err.stack);
+									  } 
+								  else{
+									  localStorage["ARN"] = data.EndpointArn;
+									  var subscriptionObject = {
+										  Protocol: 'application',
+										  TopicArn: 'arn:aws:sns:us-east-1:370339223087:USFAthletics_PushNotifications',
+										  Endpoint: data.EndpointArn
+										  };
+									  sns.subscribe(subscriptionObject, function(err, data){
+										  if(err){
+											  console.log("CAN'T SUBSCRIBE");
+											  console.log(err);
+											  }
+										  });
+								  }
+				});
+			}
+			
+			function errorHandler (error) {
+				alert(error);
+			}
+							
+			
+			$.ajaxSetup ({
+			// Disable caching of AJAX responses
+			cache: false
+			});
+			
+			init();
+			/*
+				This function retrieves the latest news for 8 sports.
+			*/
+			function getAjax(){
+					
+					var content = document.getElementById("content");
+				
+					var output = "";
+					
+					SportsAPI.getNews(
+					{
+						
+						success: function(json)
+						{
+							console.log(json);
+							var oid = localStorage["news_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+								 
+								var title = json[i]["Title"];
+								var articleBody = json[i]["Body"];
+								var articleSport = json[i]["Sport"];
+								switch(json[i]["Sport"]){
+									case '1':
+									articleSport = "Men's Basketball";
+									break;
+									case '5':	
+									articleSport = "Football";
+									break;
+									case '3':
+									articleSport = "Baseball";
+									break;
+									case '2':
+									articleSport = "Women's Basketball";
+									break;
+									case '7':
+									articleSport = "Men's Soccer";
+									break;
+									case '14':
+									articleSport = "Women's Soccer";
+									break;
+									case '11':
+									articleSport = "Softball";
+									break;
+									case '18':
+									articleSport = "Volleyball";
+									break;
+									}
+								
+								var picLink = json[i]["Photo_url"];
+								var picCaption= json[i]["Photo_caption"];
+								output += "<tr onclick='showNews(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='news'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16;font-family:superclare;font-size:14px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='width:80%'>" + title + "</p></td></a></tr>";
+								//alert(output);
+							
+								localStorage["output"]=output;
+								addNews(title,articleBody,articleSport,picLink,picCaption);
+								
+							
+								//addNews(title,articleBody,articleSport,picLink,picCaption);
+							// alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							
+							
+							 
+							 }
+							
+							 //var outputting = document.getElementById('news');
+							 $('#news').html(localStorage["output"]);
+							 $('#news').fadeIn("slow");
+					   		 //outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve News Articles");
+						}
+					});
+					}
+				
+			</script>
+			<script>
+			          getAjax();
+					  
+			/*
+				This function takes in an id based upon the table row that
+				was tapped and then changes the page to display that news
+				article.
+			*/
+			
+			function showNews(id){
+									localStorage["news_id"] = id;
+									//$.mobile.changePage('getNews.html', { transition: 'pop', role: 'dialog'});
+									$(':mobile-pagecontainer').pagecontainer( "change", "getNews.html", { role: "dialog" });
+			
+								}
+			</script>
+			
+			<!--News Table Display-->
+			<div id="newsHolder" style="overflow-x:hidden;overflow-y:scroll;width:100%;margin-left:-5%;height:100%;height: 100%;margin-top:-4.4%;">
+				<table style="margin-left:0%;width:100%;width:100%;font-size:20px;margin-top:-4%;background-color:#edb32e;display:none;" id="news"></table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

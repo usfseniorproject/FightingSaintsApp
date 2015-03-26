@@ -8,8 +8,6 @@
 <link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
 <script src="jquery-1.9.1.min.js"></script>
 <script src="jquery.mobile-1.4.0.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-
 </head>
 
 <style type="text/css">
@@ -20,28 +18,31 @@
 </style>
 
 <body  style="background-color:#472d16;">
-<div data-role="page" data-shadow="false" id ="calendar" style="background-color:#472d16;">
-
-<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
-	<a href="#menupanel" data-role="button" data-inline="true" data-shadow="false" style="position:absolute;z-index: 2;left: 5%;top: 20%;background-color:transparent; border:0px; width:20%;height:65%"><img src="img/menuicon.png" width="80%" height="80%" border="0"/></a>
-	<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
-</div>
-
-<div data-role="panel" id="menupanel" data-theme="b" style="position:absolute;">
-	<div class="panel-content" style="padding: 1em;margin-top: -12%;">
-		<a href="picksport.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster2.jpg" width=20% style="float:left;">Sports Rosters</a>
-    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info2.jpg" width=20%  style="float:left;">Gym Schedule</a>
-    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule2.jpg" width=19%  style="float:left;">Calender</a>
-    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats2.jpg" width=21% style="float:left;">Live Stats</a>
-	</div>
-</div>	
+	<div data-role="page" data-shadow="false" id ="calendar" style="background-color:#472d16;">
 	
-<div data-role="content" style="background-color:#472d16;margin-left:-10%;">
-
-<!--iFrame from Google Calendar for Gym Schedule-->
-
-<iframe style="margin-top:6.5%;" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=1000&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hlo27141sams8m4b391ir1kfa8%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FChicago" style=" border-width:0 " width="3500" height="1000" frameborder="0"  seamless></iframe>
-</div>
-</div>
+		<!--Contains the header picture and the button to access the slide out navigation panel-->
+		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+			<img src="img/menuicon.png" class="menuButton" style="position:absolute;left: 10%;top: 22%;width:20%;"/>
+			<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
+		</div>
+		
+		<!--"About App" Popup Content, scripts contained in popupEvents.js-->
+		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;" data-display="overlay">
+			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+				<a href="homepage.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
+				<a href="rostertype.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.jpg" width=20% style="float:left;">Sports Rosters</a>
+		    	<a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info.jpg" width=20%  style="float:left;">Gym Schedule</a>
+		    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.jpg" width=19%  style="float:left;">Calender</a>
+		    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.jpg" width=21% style="float:left;">Live Stats</a>
+			</div>
+		</div>	
+			
+		<div data-role="content" style="background-color:#472d16;margin-left:-10%;">
+			<script src="js/panelEvents.js"></script>
+		
+			<!--iFrame from Google Calendar for Gym Schedule-->
+			<iframe style="margin-top:6.5%;" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=1000&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hlo27141sams8m4b391ir1kfa8%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FChicago" style=" border-width:0 " width="3500" height="1000" frameborder="0"  seamless></iframe>
+		</div>
+	</div>
 </body>
 </html>

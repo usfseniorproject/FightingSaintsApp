@@ -5,7 +5,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/Baseball_Roster",
+				url:localStorage["ServerAddress"]+"/Baseball_Roster",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -42,7 +42,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/Mens_Soccer_Roster",
+				url:localStorage["ServerAddress"]+"/Mens_Soccer_Roster",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -79,7 +79,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/Softball_Roster",
+				url:localStorage["ServerAddress"]+"/Softball_Roster",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -116,7 +116,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/Womens_Soccer_Roster",
+				url:localStorage["ServerAddress"]+"/Womens_Soccer_Roster",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -153,7 +153,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/football",
+				url:localStorage["ServerAddress"]+"/football",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -190,7 +190,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/mens_basketball",
+				url:localStorage["ServerAddress"]+"/mens_basketball",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -227,7 +227,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/volleyball_Roster",
+				url:localStorage["ServerAddress"]+"/volleyball_Roster",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -264,7 +264,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/womens_basketball",
+				url:localStorage["ServerAddress"]+"/womens_basketball",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -301,7 +301,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/volleyball_live_stats",
+				url:localStorage["ServerAddress"]+"/volleyball_live_stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -338,7 +338,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/Baseball_Stats",
+				url:localStorage["ServerAddress"]+"/Baseball_Stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -375,7 +375,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/Softball_Stats",
+				url:localStorage["ServerAddress"]+"/Softball_Stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -412,7 +412,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/football_stats",
+				url:localStorage["ServerAddress"]+"/football_stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -449,7 +449,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/mens_basketball_stats",
+				url:localStorage["ServerAddress"]+"/mens_basketball_stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -486,7 +486,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/mens_soccer_live_stats",
+				url:localStorage["ServerAddress"]+"/mens_soccer_live_stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -523,7 +523,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/womens_basketball_stats",
+				url:localStorage["ServerAddress"]+"/womens_basketball_stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -560,7 +560,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/womens_soccer_live_stats",
+				url:localStorage["ServerAddress"]+"/womens_soccer_live_stats",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -597,7 +597,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/news",
+				url:localStorage["ServerAddress"]+"/news",
 				dataType: 'jsonp',
 				success:function(json)
 				{
@@ -634,7 +634,7 @@ var kyle = {
 		{
 			$.ajax(
 			{
-				url:"http://ec2-54-205-114-37.compute-1.amazonaws.com:8888/games_today",
+				url:localStorage["ServerAddress"]+"/games_today",
 				dataType: 'jsonp',
 				success:function(json)
 				{
