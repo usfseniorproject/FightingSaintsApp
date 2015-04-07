@@ -14,8 +14,8 @@
 <script src="jquery.mobile-1.4.0.min.js"></script>
 <script src="js/SportsAPI.js"></script>
 
-<body style ="background-color:#472d16;hidden overflow;right: -30px;">
-	<div data-role="page" id="roster" data-theme="a">
+<body style ="height: 100% !important;background-color:#472d16;hidden overflow;right: -30px;">
+	<div data-role="page" id="roster" data-theme="a" style="height: 100% !important;">
 	
 		<!--Header containing the header picture and the button to bring out the panel-->
 		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 			
-   		<div data-role="content" style="margin-top:10%;background-color: #472d16;height:90%">
+   		<div data-role="content" style="margin-top:29%;background-color: #472d16;height:77%">
    			<script src="js/panelEvents.js"></script>
    			
    			<!--Stylization for the roster table-->
@@ -80,7 +80,7 @@
 			</script>
 			
 			<!--Table with holder for each of the sports in the current roster-->
-    		<div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:115%;height:100%;margin-left:-6.5%;margin-top: 20%">
+    		<div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:115%;height:100%;margin-left:-6.5%;">
  				 <table style="width:115%;height:100%;font-size:13px;margin-top:-5.75%;background-color:#edb32e;" id="sportTypes">
                     <tbody>
 	                    <tr class="men"><td class="Baseball"><span>Baseball</span></td></tr>
