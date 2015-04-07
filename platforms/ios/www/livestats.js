@@ -45,7 +45,7 @@ localStorage["count2"] = "0";
 
 function checkForGamesToday(){
 	
-	kyle.getGamesToday(
+	SportsAPI.getGamesToday(
 			{
 				
 				success: function(json)
@@ -546,7 +546,7 @@ function checkForGamesToday(){
 function getvolleyball(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getWomensVolleyballStats(
+			SportsAPI.getWomensVolleyballStats(
 			{
 				
 				success: function(json)
@@ -622,7 +622,7 @@ function getvolleyball(){
 		}
 		else{
 			localStorage["count"] = "1";
-			kyle.getWomensVolleyballStats(
+			SportsAPI.getWomensVolleyballStats(
 			{
 				
 				success: function(json)
@@ -699,7 +699,7 @@ function getvolleyball(){
 function getwomenssoccer(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getWomensSoccerStats(
+			SportsAPI.getWomensSoccerStats(
 			{
 				
 				success: function(json)
@@ -772,7 +772,7 @@ function getwomenssoccer(){
 		}
 		else{
 			localStorage["count"] = "1";
-			kyle.getWomensSoccerStats(
+			SportsAPI.getWomensSoccerStats(
 			{
 				
 				success: function(json)
@@ -847,7 +847,7 @@ function getwomenssoccer(){
 function getmenssoccer(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensSoccerStats(
+			SportsAPI.getMensSoccerStats(
 			{
 				
 				success: function(json)
@@ -920,7 +920,7 @@ function getmenssoccer(){
 		}
 		else{
 			localStorage["count"] = "1";
-			kyle.getMensSoccerStats(
+			SportsAPI.getMensSoccerStats(
 			{
 				
 				success: function(json)
@@ -997,7 +997,7 @@ function getmenssoccer(){
 function getwomensbasketball(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getWomensBasketballStats(
+			SportsAPI.getWomensBasketballStats(
 			{
 				
 				success: function(json)
@@ -1073,7 +1073,7 @@ function getwomensbasketball(){
 		else{
 			localStorage["count"] = "1";
 			
-			kyle.getWomensBasketballStats(
+			SportsAPI.getWomensBasketballStats(
 			{
 				
 				success: function(json)
@@ -1150,7 +1150,7 @@ function getwomensbasketball(){
 function getmensfootball(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensFootballStats(
+			SportsAPI.getMensFootballStats(
 			{
 				
 				success: function(json)
@@ -1226,7 +1226,7 @@ function getmensfootball(){
 		else{
 			localStorage["count"] = "1";
 			
-			kyle.getMensFootballStats(
+			SportsAPI.getMensFootballStats(
 			{
 				
 				success: function(json)
@@ -1303,7 +1303,7 @@ function getmensfootball(){
 function getmensbasketball(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensBasketballStats(
+			SportsAPI.getMensBasketballStats(
 			{
 				
 				success: function(json)
@@ -1379,7 +1379,7 @@ function getmensbasketball(){
 		else{
 			localStorage["count"] = "1";
 			
-			kyle.getMensBasketballStats(
+			SportsAPI.getMensBasketballStats(
 			{
 				
 				success: function(json)
@@ -1456,7 +1456,7 @@ function getmensbasketball(){
 function getmensbaseball(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensBaseballStats(
+			SportsAPI.getMensBaseballStats(
 			{
 				
 				success: function(json)
@@ -1529,7 +1529,7 @@ function getmensbaseball(){
 		}
 		else{
 			localStorage["count"] = "1";
-			kyle.getMensBaseballStats(
+			SportsAPI.getMensBaseballStats(
 			{
 				
 				success: function(json)
@@ -1608,7 +1608,7 @@ function getmensbaseball(){
 function getwomenssoftball(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getWomensSoftballStats(
+			SportsAPI.getWomensSoftballStats(
 			{
 				
 				success: function(json)
@@ -1683,7 +1683,7 @@ function getwomenssoftball(){
 		}
 		else{
 			localStorage["count"] = "1";
-			kyle.getWomensSoftballStats(
+			SportsAPI.getWomensSoftballStats(
 			{
 				
 				success: function(json)
@@ -1759,7 +1759,7 @@ function getwomenssoftball(){
 function getvolleyballSS(){
 		if (localStorage["count2"] == "1"){
 			window.setInterval(function (){
-			kyle.getWomensVolleyballStats(
+			SportsAPI.getWomensVolleyballStats(
 			{
 				
 				success: function(json)
@@ -1833,7 +1833,7 @@ function getvolleyballSS(){
 		}
 		else{
 			localStorage["count2"] = "1";
-			kyle.getWomensVolleyballStats(
+			SportsAPI.getWomensVolleyballStats(
 			{
 				
 				success: function(json)
@@ -1909,7 +1909,7 @@ function getvolleyballSS(){
 function getwomenssoccerSS(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getWomensSoccerStats(
+			SportsAPI.getWomensSoccerStats(
 			{
 				success: function(json)
 				{
@@ -1980,7 +1980,7 @@ function getwomenssoccerSS(){
 		}
 		else{
 			localStorage["count"] = "1";
-			kyle.getWomensSoccerStats(
+			SportsAPI.getWomensSoccerStats(
 			{
 				
 				success: function(json)
@@ -2055,7 +2055,7 @@ function getwomenssoccerSS(){
 function getmenssoccerSS(){
 		if (localStorage["count"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensSoccerStats(
+			SportsAPI.getMensSoccerStats(
 			{
 				
 				success: function(json)
@@ -2128,7 +2128,7 @@ function getmenssoccerSS(){
 		}
 		else{
 			localStorage["count"] = "1";
-			kyle.getMensSoccerStats(
+			SportsAPI.getMensSoccerStats(
 			{
 				
 				success: function(json)
@@ -2203,7 +2203,7 @@ function getmenssoccerSS(){
 function getwomensbasketballSS(){
 		if (localStorage["count2"] == "1"){
 			window.setInterval(function (){
-			kyle.getWomensBasketballStats(
+			SportsAPI.getWomensBasketballStats(
 			{
 				
 				success: function(json)
@@ -2279,7 +2279,7 @@ function getwomensbasketballSS(){
 		else{
 			localStorage["count2"] = "1";
 			
-			kyle.getWomensBasketballStats(
+			SportsAPI.getWomensBasketballStats(
 			{
 				
 				success: function(json)
@@ -2356,7 +2356,7 @@ function getwomensbasketballSS(){
 function getmensfootballSS(){
 		if (localStorage["count2"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensFootballStats(
+			SportsAPI.getMensFootballStats(
 			{
 				
 				success: function(json)
@@ -2432,7 +2432,7 @@ function getmensfootballSS(){
 		else{
 			localStorage["count2"] = "1";
 			
-			kyle.getMensFootballStats(
+			SportsAPI.getMensFootballStats(
 			{
 				
 				success: function(json)
@@ -2509,7 +2509,7 @@ function getmensfootballSS(){
 function getmensbasketballSS(){
 		if (localStorage["count2"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensBasketballStats(
+			SportsAPI.getMensBasketballStats(
 			{
 				
 				success: function(json)
@@ -2585,7 +2585,7 @@ function getmensbasketballSS(){
 		else{
 			localStorage["count2"] = "1";
 			
-			kyle.getMensBasketballStats(
+			SportsAPI.getMensBasketballStats(
 			{
 				
 				success: function(json)
@@ -2662,7 +2662,7 @@ function getmensbasketballSS(){
 function getmensbaseballSS(){
 		if (localStorage["count2"] == "1"){
 			window.setInterval(function (){
-			kyle.getMensBaseballStats(
+			SportsAPI.getMensBaseballStats(
 			{
 				
 				success: function(json)
@@ -2735,7 +2735,7 @@ function getmensbaseballSS(){
 		}
 		else{
 			localStorage["count2"] = "1";
-			kyle.getMensBaseballStats(
+			SportsAPI.getMensBaseballStats(
 			{
 				
 				success: function(json)
@@ -2814,7 +2814,7 @@ function getwomenssoftballSS(){
 		if (localStorage["count2"] == "1"){
 			
 			window.setInterval(function (){
-			kyle.getWomensSoftballStats(
+			SportsAPI.getWomensSoftballStats(
 			{
 				
 				success: function(json)
@@ -2891,7 +2891,7 @@ function getwomenssoftballSS(){
 		}
 		else{
 			localStorage["count2"] = "1";
-			kyle.getWomensSoftballStats(
+			SportsAPI.getWomensSoftballStats(
 			{
 				
 				success: function(json)
