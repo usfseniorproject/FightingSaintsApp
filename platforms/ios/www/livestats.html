@@ -43,7 +43,7 @@
 		 
 		 // Hide the scoreboards initially
 		 
-		 $('#outerWrapper').hide(); 
+		 //$('#outerWrapper').hide(); 
 		 $('#outerWrapper1').hide();
 		 $('#gamechoice').hide();
 		 $('#nogames').css("margin-top", "20%");
@@ -54,35 +54,7 @@
 		// This function alternates scoreboards when the user taps on them
 		
 		$(document).ready(function(){
-	/*
-		$( "#SportTitle" ).on('click',function() {
-			
-			var zindex = $(this).zIndex();
-			alert("clicked first");
-			if(zindex == "1"){
-				$(this).css("zIndex",0);
-				$('#outerWrapper1').css("zIndex",1);
-				}
-			if(zindex == "0"){
-				$(this).css("zIndex",1);
-				$('#outerWrapper1').css("zIndex",0);
-				}
-		});
-		$( "#SportTitle1" ).on('click',function() {
-			alert("clicked second");
-			var zindex = $(this).zIndex();
-			
-			if(zindex == "1"){
-				$(this).css("zIndex",0);
-				$('#outerWrapper').css("zIndex",1);
-				}
-			if(zindex == "0"){
-				$(this).css("zIndex",1);
-				$('#outerWrapper').css("zIndex",0);
-				}
-		});
-		*/
-		//$('#gametwo').css('background-color','#918f8f');
+	
 		$("#gameone").on('click',function() {
 			//alert("clicked g1");
 			$('#outerWrapper').show(); 
