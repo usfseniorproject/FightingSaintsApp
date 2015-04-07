@@ -33,28 +33,6 @@ Rosters.webdb.createTable = function (){
     e.executeSql(query);
 	var query = "DROP TABLE IF EXISTS football";
     e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS m_track";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS w_track";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS m_cross_country";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS w_cross_country";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTs m_bowling";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS w_bowling";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS m_golf";
-    e.execute(query);
-    var query = "DROP TABLE IF EXISTS w_golf";
-    e.excuteSql(query);
-    var query = "DROP TABLE IF EXISTS m_tennis";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS w_tennis";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTS cheerleading";
-    e.executeSql(query);
 	
 	
 	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Hometown TEXT, OurID TEXT, picLink TEXT)", []);
@@ -66,9 +44,6 @@ Rosters.webdb.createTable = function (){
 	e.executeSql("CREATE TABLE IF NOT EXISTS softball(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS baseball(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS football(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_track(ID INTEGER PRIMARY KET ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, piclink TEXT", []);
-	/*e.executeSql("CREATE TABLE IF NOT EXISTS w_track(ID INTEGER PRIMARY KEY ASC, Name")
-	*/
 	});
 	}
 
