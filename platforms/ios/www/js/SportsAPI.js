@@ -332,6 +332,416 @@ var SportsAPI = {
 			});
 		}
 	},
+<<<<<<< HEAD
+=======
+	/*getMensBowling : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/Mens_Bowling_Roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},*/
+	getMensCrossCountry : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/Mens_Cross_Country_Roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getMensGolf : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/Mens_Golf_Roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getMensTrack : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/mens_track_roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getMensTennis : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/mens_tennis_roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getWomensBowling : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/womens_bowling_roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getWomensCrossCountry : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/womens_cross_country",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getWomensGolf : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/womens_golf_roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getWomensTennis : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/womens_tennis_roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getWomensTrack : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/womens_track_roster",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+	getCheerleading : function (callObj) 
+	{
+		if(callObj)
+		{
+			$.ajax(
+			{
+				url:localStorage["ServerAddress"]+"/cheerleading",
+				dataType: 'jsonp',
+				success:function(json)
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, true);
+					}
+					else if(callObj.success && $.isFunction(callObj.success))
+					{
+						callObj.success(json);
+					}
+				},
+				error:function()
+				{
+					if($.isFunction(callObj))
+					{
+						callObj(json, false);
+					}
+					else if(callObj.error && $.isFunction(callObj.error))
+					{
+						callObj.error();
+					}
+					else if(callObj.fail && $.isFunction(callObj.fail))
+					{
+						callObj.fail();
+					}
+				}
+			});
+		}
+	},
+>>>>>>> SportsAPI update
 	getWomensVolleyballStats : function (callObj) 
 	{
 		if(callObj)
