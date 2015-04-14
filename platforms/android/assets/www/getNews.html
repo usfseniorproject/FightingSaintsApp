@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Roster</title>
+</head>
+<meta name="viewport" width=device-width />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="jquery.mobile.structure-1.2.0.min.css">
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+
+<div data-role="dialog" id="getnews" data-theme="a">
+	<!--Header, consists of name of the sport is pertains to-->
+	<div data-role="header" data-theme="e" style="background-color:#edb32e;color:white;text-shadow:none;">
+		<h4 style="width:80%;margin-left:12%" id ="headerText1">News</h4>
+	</div>
+   		<div data-role="content" style="margin-top:0%;">
+		  <script>
+					var News= {};
+					News.webdb = {};
+					News.webdb.db = null;
+					var dbsize = 5 * 1024;   
+		
+					News.webdb.db = openDatabase("News","1.0","News Manager",dbsize);
+			
+					News.webdb.onError = function(tx, e) {
+						alert("There has been an error: " + e.message);
+					}			
+					
+					// This function retrieves a news article.
+					
+					function getNews(tx, rs) {
+						
+						var title = rs.rows.item(0).Title;
+						var	articleBody = rs.rows.item(0).Body; 
+					
+						var picLink = rs.rows.item(0).Photo_URL;
+						var sport = rs.rows.item(0).Sport;
+						articleTitle.innerHTML = title;
+						headerText1.innerHTML = sport;
+						//$('a').attr('target','blank');
+						articleContent.innerHTML = articleBody;
+						var anchors = $('#articleContent a').toArray();
+						for(var i = 0;i<anchors.length;i++){
+				   			$(anchors[i]).attr('href','#');
+						}
+						$('#mugshot1').attr('src',picLink);
+						//alert($('#articleContent').html());
+					
+					
+				}
+				
+					// This function selects all of the news article information.
+					
+					function initGet(){
+						var objectID = localStorage["news_id"];
+						var tableName = localStorage["tableName"];
+					
+						var db = News.webdb.db;
+						
+						db.transaction(function(e){
+		  				e.executeSql("SELECT * FROM news WHERE ID=?", [objectID],
+			  			getNews,
+			  		News.webdb.onError)
+					});
+							
+					}	
+					
+					</script>	
+	           <hr>
+	           <p style="margin-left:5%;font-size:15px;" id ="articleTitle"></p>
+	           <hr>
+	           
+	           <!--Article Picture-->
+	           <img id="mugshot1" src="" height="190%" width="100%"style="border-color:white;">
+	           
+	           <script>
+			   	initGet();
+	           </script>
+	           
+	           <!--Article Contents-->
+	           <div id="articleContent"></div>
+	           
+	           <!--Done Button-->
+	           <a href="index.html" data-role="button" id = "done" data-rel="back" data-theme="c">Done</a>
+           </div>
+         </div>    
+<body>
+</body>
+</html>

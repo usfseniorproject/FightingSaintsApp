@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>View Player</title>
+<meta name="viewport" width=device-width />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="jquery.mobile.structure-1.2.0.min.css">
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+<meta name="viewport"content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+</head>
+
+	<div id = "viewPlayer" data-role="page" style="background-color:#472d16;">
+		<!--Header, consists of player name and number-->
+		<div data-role="header" data-theme="e" style="background-color:#edb32e;color:white;text-shadow:none;">
+			<center><h4 id="headerText" style="width:200px;margin-bottom:15px;margin-top:10px;"></h4></center>
+		</div>
+
+		<div id = "content" data-role="content" style="background-color:white;">
+			<script>
+				var Rosters= {};
+				Rosters.webdb = {};
+				Rosters.webdb.db = null;
+				var dbsize = 5 * 1024;   
+	
+				Rosters.webdb.db = openDatabase("Rosters","1.0","Roster Manager",dbsize);
+		
+				Rosters.webdb.onError = function(tx, e) {
+				alert("There has been an error: " + e.message);
+				}			
+			
+				// This function changes the page back to the home page
+				
+				function changeBack (){
+					alert("Prayer Request Successfully Removed");
+					$.mobile.changePage('homepage.html', { transition: 'pop', role: 'page' });
+					
+				}
+				
+				// This function retreives a specific players information.
+				
+				function getPlayer(tx, rs) {
+				    var num =  rs.rows.item(0).Player_Number;
+					num = num.substring(0,num.indexOf("."));
+					//var count = localStorage["count"]; 
+					headerText.innerHTML = "#" + num + " " + rs.rows.item(0).Name;
+					switch(localStorage["tableName"]){
+						case "m_bowling":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+					}
+					var position = rs.rows.item(0).Position;
+					var player_number = rs.rows.item(0).Player_Number; 
+					var player_name = rs.rows.item(0).Name;
+					var hometown = rs.rows.item(0).Hometown;
+					var weight = rs.rows.item(0).Weight;
+					var height = rs.rows.item(0).Height;
+					var className = rs.rows.item(0).Class_Name;
+					var picLink = rs.rows.item(0).picLink;
+					var temp = "";
+					var temp2 = "";
+					$('#mugshot').attr('src',picLink);
+					temp = $('#ClassName').text();
+					
+					temp2 = temp + "  " + className;
+					$('#ClassName').text(temp2);
+					temp = $('#Position').text();
+					temp2 = temp + "  " + position;
+					$('#Position').text(temp2);
+					temp = $('#Height').text()
+					temp2 = temp + "  " + height;
+					$('#Height').text(temp2)
+					temp = $('#Hometown').text();
+					temp2 = temp + "  " + hometown;
+					$('#Hometown').text(temp2);
+					
+					subject.innerHTML = rs.rows.item(0).Position;
+					innerContent.innerHTML = rs.rows.item(0).Player_Number; 
+					
+					
+				
+			}
+				// This function takes care of the initial table selection.
+				
+				function initGet(){
+					var objectID = localStorage["roster_id"];
+					var tableName = localStorage["tableName"];
+					var db = Rosters.webdb.db;
+					db.transaction(function(e){
+	  				e.executeSql("SELECT * FROM "+tableName+" WHERE ID=?", [objectID],
+		  			getPlayer,
+		  		Rosters.webdb.onError)
+				});
+					
+				}	
+			</script>
+          
+          <!--Player information-->
+           <center>
+           		<img id="mugshot" src="" border="5" height="50%" width="50%"style="border-color:white;border-radius:15px;box-shadow:0px 0px 5px #000000;">
+           		<p id="ClassName" style="color:black;text-shadow:none;">Class:</p>
+            	<p id="Position"  style="color:black;text-shadow:none;">Position:</p>
+              	<p id="Height"  style="color:black;text-shadow:none;">Height:</p>
+              	<p id="Hometown"  style="color:black;text-shadow:none;">Hometown:</p>
+           <center>
+         	
+         	<!--Grabs the information and inserts into the placeholders on the page-->
+          	<div id="innerContent" style="font-size:17px;color:black;text-shadow:none;">
+            	<script>
+					initGet();
+				</script>
+          	</div>
+      		
+      		<!--Done Button-->
+			<a href="homepage.html" data-role="button" id = "done" data-rel="back" data-theme="c">Done</a>
+		</div>
+	</div>
+<body>
+</body>
+</html>
+

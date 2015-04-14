@@ -1,0 +1,213 @@
+<!doctype html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>USF Athletics</title>
+        <link rel="stylesheet" href="jquery/jquery.mobile.structure-1.4.5.css">
+        <link rel="stylesheet" href="jquery/jquery.mobile.theme-1.4.5.min.css">
+        <link rel="stylesheet" href="jquery/jquery.mobile.icons-1.4.5.min.css">
+        <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.map">
+        <link rel="stylesheet" href="css/styles.css">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
+        <script src="jquery-1.9.1.min.js"></script>
+        <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/aws-sdk.min.js"></script>
+    </head>
+	
+	
+	<style>
+		@font-face {
+		font-family: HoneyScript;
+		src: url(HoneyScript-SemiBold.ttf);
+		}
+		@font-face{
+			font-family:HoboStd;
+			src:url(HoboStd.otf);
+			}
+		@font-face{
+			font-family:Rockwell;
+			src:url(RockwellExtraBold);
+			}
+		 #mypanel{
+	    -webkit-transform: translate3d(0,0,0);
+	    
+    }
+	</style>
+    <body style ="background-color:white;" id="index">
+        <div data-role="page" class="page" id="loginPage" style="background-color:white;
+background-repeat:no-repeat;background-position:44% 50%;background-size: cover !important;width:100%;height:100%;" data-theme="a">
+			<div id="registerOverlay" style="width:100%;height:105%;background-color:rgba(0,0,0,0.6);margin-top:-5%;position:absolute;z-index:500;display:none;">
+            	<div id="regFormOuterHolder" style="background-color:#eeeeee;border-radius:10px;width: 90%;height: 53%;position: relative;top: 22%;margin:auto;box-shadow: 0px 0px 6px #FFFFFF;">
+                	<div id="regInnerFormHolder" style="position:absolute;margin-top:5%;width:100%;text-align:center;">
+                    	 <div id="registerOverlayHeader" style="display:block;position:relative;padding-top:3%;width:100%;">
+                             <span style="width:100%;text-shadow:none;font-size:15px;">Please Enter the Additional Information</span>
+                         </div>
+                         <div style="width:90%;margin-left:5%;">
+                         	<input type="text" id="fname" placeholder="First Name" required width="100px">
+                         </div>
+                         <div style="width:90%;margin-left:5%;">
+                         	<input type="text" id="lname" placeholder="Last Name" required width="100px">
+                         </div>
+                         <div style="width:90%;margin-left:5%;">
+                         	<input type="text" id="phone" placeholder="Cellphone - Optional" width="100px">
+                         </div>
+                         <fieldset data-role="controlgroup" id="checkbox-admin-container" style="width:90%;margin-left:5%;">
+                         	<input type="checkbox" name="checkbox-admin" id="checkbox-admin" class="custom" style="margin-left:-25%;font-size:12px;" />
+                            <label for="checkbox-admin" id="checkbox-admin-label" style="font-size:12px;">Request Admin Access</label>
+                         </fieldset>
+                         <button id="finishRegistration" style="width:90%;margin-left:5%;" onclick="checkFields()">Finish Registration</button>
+                    </div>
+                </div>
+            </div>
+            <div data-role="header" style="border:0;" >
+            	<header>
+            	</header>
+            </div>
+            <div data-role="content" id="maincontent" style="position:relative;width: 100%;height: 100%;margin-left:-4.9%;margin-top:-4.2%;overflow-y:scroll;">
+            
+			   <script src="js/lock-6.7.min.js"></script>
+               <script src="js/auth0-2.1.4.js"></script>
+               <script src="js/jquery.isloading.js"></script>
+               <script>
+			   </script>
+               <script>
+			   		chooseBackgroundImg();
+					document.addEventListener("deviceready",  setTimeout(function() {
+						navigator.splashscreen.hide();
+					}, 500), false);
+					
+					function findMonth(){
+						var d = new Date();
+						var month = d.getMonth()+1;
+						return month;
+					}
+					
+					function chooseBackgroundImg(){
+						
+						/*
+						January - Basketball
+						February - Bowling
+						March - Golf 
+						April - Baseball
+						May - Softball 
+						June - Cross Country 
+						July - Soccer 
+						August - Tennis
+						September - Volleyball
+						October - Track
+						November - Football
+						December - Cheerleading 
+						*/
+						switch(findMonth()){
+							case 1:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Jan.jpg')");
+								break;
+							case 2:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Feb.jpg')");
+								break
+							case 3:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Mar.jpg')");
+								break;
+							case 4: 
+								$('#loginPage').css("background-image", "url('img/LoginPics/Apr.jpg')");
+								break;
+							case 5:
+								$('#loginPage').css("background-image", "url('img/LoginPics/May.jpg')");
+								break;
+							case 6:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Jun.jpg')");
+								break;
+							case 7:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Jul.jpg')");
+								break;
+							case 8:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Aug.jpg')");
+								break;
+							case 9: 
+								$('#loginPage').css("background-image", "url('img/LoginPics/Sep.jpg')");
+								break;
+							case 10:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Oct.jpg')");
+								break;
+							case 11:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Nov.jpg')");
+								break;
+							case 12:
+								$('#loginPage').css("background-image", "url('img/LoginPics/Dec.jpg')");
+								break;
+				
+						}
+					}
+					
+					
+			   		function login(){
+						var lock = null;
+						$(document).ready(function() {
+						   lock = new Auth0Lock('be7aXwUINP6jB1oBCBPpUmW7CvNiWtIm', 'bondappdev.auth0.com');
+						});
+						
+						var userProfile;
+						lock.show(function(err, profile, token) {
+							if (err) {
+								
+							  // Error callback
+							  
+							  navigator.notification.alert("There was an error logging in");
+							 
+							} else {
+								
+							  // Success calback
+							
+							  // Save the JWT token.
+							  
+							  localStorage.setItem('userToken', token);
+							 
+							  // Save the profile
+							  
+							  userProfile = profile;
+							  
+							  var auth0 = new Auth0({
+								domain:         "bondappdev.auth0.com",
+								clientID:       "be7aXwUINP6jB1oBCBPpUmW7CvNiWtIm",
+								callbackURL:    'dummy'
+							  });
+							 
+								
+							    var aws_arns = { role: 'arn:aws:iam::370339223087:role/USFAthletics', principal: 	'arn:aws:iam::370339223087:saml-provider/Auth0-Authentication' };
+							  	auth0.getDelegationToken("be7aXwUINP6jB1oBCBPpUmW7CvNiWtIm", token, aws_arns, function(err, result) {
+								var aws_credentials = result.Credentials; // AWS temp credentials
+								localStorage["ex"]= aws_credentials.Expiration;
+								AWS.config.accessKeyId = aws_credentials.AccessKeyId;
+								localStorage["aki"] = aws_credentials.AccessKeyId;
+							    AWS.config.secretAccessKey = aws_credentials.SecretAccessKey;
+								localStorage["sk"] = aws_credentials.SecretAccessKey;
+								AWS.config.sessionToken = aws_credentials.SessionToken;
+								localStorage["st"] = aws_credentials.SessionToken;
+								AWS.config.update({ region: 'us-east-1' });
+							  	table = new AWS.DynamoDB({params: {TableName: 'AppServers'}});
+								table.getItem({Key: {ServerID: {S:'0'}}}, function(err, data) {
+									if(err){
+										alert(err);	
+									}
+									else{
+										localStorage["ServerAddress"] = data.Item.ServerAddress.S;
+										$.mobile.changePage('homepage.html', { transition: 'none', role: 'page' });
+									}
+								});
+							});
+							}
+						});
+					}
+
+			   	</script>
+
+              <div id="loginHolder" style="width:100%;margin-top: 32%;position:fixed;">
+              	  <img id="loginImage" src="img/usfLogoTransparent2.png" style="margin-left:4.3%;padding-top: 10.7%;width: 90%;color:white;text-shadow:none;-webkit-text-stroke-width: 0.2px;-webkit-text-stroke-color: #848484;"/>
+              	  <button id="LoginButton" class="loginButtons" style="font-size:14px;width:95%;margin-left:2.3%;opacity:0.85;" onclick="login()"><span>Login</span></button>
+              </div>
+            </div>
+        </div>
+        <div data-role="footer" style="display:none;"></div>
+    </body>
+</html>

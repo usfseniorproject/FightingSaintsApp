@@ -1,0 +1,1225 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Roster</title>
+</head>
+<meta name="viewport" content="width=device-width, user-scalable=noinitial-scale=1"/>
+<link rel="stylesheet" href="jquery.mobile.structure-1.2.0.min.css">
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+<link rel="stylesheet" href="styles.css" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+
+
+<body style ="background-color:#edb32e;hidden overflow;right: -30px;height:100% !important;">
+	<script>
+	</script>
+
+	<div data-role="page" id="rosterdata" data-theme="a" style="height:100% !important;">
+	
+		<!--Header containing the header picture and the button to bring out the panel-->
+		<div data-role="header" style="width:100%;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px;position:fixed;top:0;left:0;border:0;margin-top:-4%;background-color:#edb32e;" >
+			<img src="img/menuicon.png" class="menuButton" style="position:absolute;left: 10%;top: 22%;width:20%;"/>
+			<img src="img/header.jpg" width="100%" id="headerpic" height="50%" style="padding-right:50%;float:left;margin-left:0;z-index: 1;">
+		</div>
+		
+		<!--"About App" Popup Content, scripts contained in popupEvents.js-->
+		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;" data-display="overlay">
+			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
+				<a href="homepage.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
+				<a href="rostertype.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.jpg" width=20% style="float:left;">Sports Rosters</a>
+			    <a href="gymschedule.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/info.jpg" width=20%  style="float:left;">Gym Schedule</a>
+			    <a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.jpg" width=19%  style="float:left;">Calender</a>
+			    <a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.jpg" width=21% style="float:left;">Live Stats</a>
+			</div>
+		</div>
+			    
+		<div data-role="content" style="margin-top:25%;height:83%;background-color:#472d16">
+			<script src="js/panelEvents.js"></script>
+		  	<script src="localdb.js"></script>
+		  	<script>init();</script>
+		  	<script src="js/SportsAPI.js"></script>
+		   	<script>
+	  
+			/*
+				This function looks in local storage for the picked sport and then 
+				sets the sport name and the table name to be used later on.
+			*/
+			function pickSport(){
+				
+				var sport = localStorage["parameter"];
+				
+				
+								if(sport == "MBasketball"){
+									localStorage["sportName"] = "Men's Basketball";
+									localStorage["tableName"] = "m_basketball";
+											}
+								if(sport == "WBasketball"){
+									localStorage["sportName"] = "Women's Basketball";
+									localStorage["tableName"] = "w_basketball";
+									}
+								if(sport == "MSoccer"){
+									localStorage["sportName"] = "Men's Soccer";
+									localStorage["tableName"] = "m_soccer";
+									}
+								if(sport == "WSoccer"){
+									localStorage["sportName"] = "Women's Soccer";
+									localStorage["tableName"] = "w_soccer";
+									}
+								if(sport == "Volleyball"){
+									localStorage["sportName"] = "Volleyball";
+									localStorage["tableName"] = "volleyball";
+									}
+								if(sport == "Softball"){
+									localStorage["sportName"] = "Softball";
+									localStorage["tableName"] = "softball";
+									}
+								if(sport == "Baseball"){
+									localStorage["sportName"] = "Baseball";
+									localStorage["tableName"] = "baseball";
+									}
+								if(sport == "Football"){
+									localStorage["sportName"] = "Football";
+									localStorage["tableName"] = "football";
+									}
+								if(sport == "MGolf"){
+									localStorage["sportName"] = "Men's Golf";
+									localStorage["tableName"] = "m_golf";
+									}
+								if(sport == "WGolf"){
+									localStorage["sportName"] = "Women's Golf";
+									localStorage["tableName"] = "w_golf";
+									}
+								if(sport == "MTennis"){
+									localStorage["sportName"] = "Men's Tennis";
+									localStorage["tableName"] = "m_tennis";
+									}
+								if(sport == "WTennis"){
+									localStorage["sportName"] = "Women's Tennis";
+									localStorage["tableName"] = "w_tennis";
+									}
+								if(sport == "MCrossCountry"){
+									localStorage["sportName"] = "Men's Cross Country";
+									localStorage["tableName"] = "m_crosscountry";
+									}
+								if(sport == "WCrossCountry"){
+									localStorage["sportName"] = "Women's Cross Country";
+									localStorage["tableName"] = "w_crosscountry";
+									}
+								if(sport == "MBowling"){
+									localStorage["sportName"] = "Men's Bowling";
+									localStorage["tableName"] = "m_bowling";
+									}
+								if(sport == "WBowling"){
+									localStorage["sportName"] = "Women's Bowling";
+									localStorage["tableName"] = "w_bowling";
+									}
+								if(sport == "MTrack"){
+									localStorage["sportName"] = "Men's Track";
+									localStorage["tableName"] = "m_track";
+									}
+								if(sport == "WTrack"){
+									localStorage["sportName"] = "Women's Track";
+									localStorage["tableName"] = "w_track";
+									}
+								if(sport == "Cheerleading"){
+									localStorage["sportName"] = "Cheerleading";
+									localStorage["tableName"] = "cheerleading";
+									}
+				}
+			
+			/*
+				This function takes in a sport and then retrieves roster data
+				for that specific sport. 
+			*/
+			
+			function getAjax(sport)
+				{
+					
+					var content = document.getElementById("content");
+					var output = "";
+					if(sport == "MBowling"){
+						SportsAPI.getMensBowlingRoster({
+							success: function(json)
+							{
+								console.log(json);
+								var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+								 
+								var pname = json[i]["Name"];
+								var pnumber = json[i]["Number"];
+								var cname = json[i]["Class"];
+								var htown= json[i]["Hometown"];
+								var picLink = json[i]["Picture"];
+								addRoster(pname,pnumber,cname,"","",cname,oid,htown,picLink);
+								
+								var className = "";
+								if(json[i]["Class"] == "SR"){
+									className = "Senior";
+									}
+								if(json[i]["Class"] == "JR"){
+									className = "Junior";
+									}
+								if(json[i]["Class"] == "SO"){
+									className = "Sophomore";
+									}
+								if(json[i]["Class"] == "FR"){
+									className = "Freshmen";
+									}
+								 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Bowling'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
+							
+								 localStorage["output"]=output;
+								 
+								 }
+								 
+								 $('#roster').html(localStorage["output"]);
+								 
+							},
+							error: function()
+							{
+								alert("Failed To Retrieve Roster Data");
+							}
+							
+						});
+					}
+					if(sport == "WBowling"){
+						SportsAPI.getWomensBowlingRoster({
+							success: function(json)
+							{
+								console.log(json);
+								var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+								 
+								var pname = json[i]["Name"];
+								var pnumber = json[i]["Number"];
+								var cname = json[i]["Class"];
+								var htown= json[i]["Hometown"];
+								var picLink = json[i]["Picture"];
+								addRoster(pname,pnumber,cname,"","",cname,oid,htown,picLink);
+								
+								var className = "";
+								if(json[i]["Class"] == "SR"){
+									className = "Senior";
+									}
+								if(json[i]["Class"] == "JR"){
+									className = "Junior";
+									}
+								if(json[i]["Class"] == "SO"){
+									className = "Sophomore";
+									}
+								if(json[i]["Class"] == "FR"){
+									className = "Freshmen";
+									}
+								 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Bowling'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
+							
+
+								 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
+								// alert(output);
+
+								 localStorage["output"]=output;
+								 
+								 }
+								 //alert(localStorage["output"]);
+								 var outputting = document.getElementById('roster');
+								 outputting.innerHTML = localStorage["output"];
+							},
+							error: function()
+							{
+								alert("Failed To Retrieve Roster Data");
+							}
+							
+						});
+					}
+					if(sport=="MBasketball"){
+					SportsAPI.getMensBasketball(
+					{
+						
+						success: function(json)
+						{
+							
+							var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+								 
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							// alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							var className = "";
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+					}
+								if(sport == "WBasketball"){
+									SportsAPI.getWomensBasketball(
+					{
+						
+						success: function(json)
+						{
+							// alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+							var className = "";
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+									}
+								if(sport == "MSoccer"){
+									SportsAPI.getMensSoccer(
+					{
+						
+						success: function(json)
+						{
+							// alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+							var className = "";
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+					//
+									}
+								if(sport == "WSoccer"){
+									SportsAPI.getWomensSoccer(
+					{
+						
+						success: function(json)
+						{
+							//alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+							var className = "";
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+									}
+								if(sport == "Volleyball"){
+									SportsAPI.getWomensVolleyball(
+					{
+						
+						success: function(json)
+						{
+							// alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							 var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+							var className = "";
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+									}
+								if(sport == "Softball"){
+									
+									SportsAPI.getWomensSoftball(
+					{
+						
+						success: function(json)
+						{
+							 //alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							var oid = localStorage["roster_id"];
+							
+							for(var i = 0;i<json.length;i++){
+							var className = "";
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+									}
+								if(sport == "Baseball"){
+									SportsAPI.getMensBaseball(
+					{
+						
+						success: function(json)
+						{
+							 //alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							 var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+							var className = "";
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+									}
+								if(sport == "Football"){
+									SportsAPI.getMensFootball(
+					{
+						
+						success: function(json)
+						{
+							// alert(JSON.stringify(json));
+							// alert(typeof(json[0].ID));
+							 var oid = localStorage["roster_id"];
+							
+							 for(var i = 0;i<json.length;i++){
+							var className = "";
+							var pname = json[i]["Name"];
+							var pnumber = json[i]["Number"];
+							var cname = json[i]["Class"];
+							var pos = json[i]["Position"];
+							var pheight= json[i]["Height"];
+							var pweight= json[i]["Weight"];
+							var htown= json[i]["Hometown"];
+							var picLink = json[i]["Picture"];
+							
+							addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+							if(json[i]["Class"] == "SR"){
+								className = "Senior";
+								}
+							if(json[i]["Class"] == "JR"){
+								className = "Junior";
+								}
+							if(json[i]["Class"] == "SO"){
+								className = "Sophomore";
+								}
+							if(json[i]["Class"] == "FR"){
+								className = "Freshmen";
+								}
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							// alert(output);
+							 localStorage["output"]=output;
+							 
+							 }
+							 //alert(localStorage["output"]);
+							 var outputting = document.getElementById('roster');
+					   		 outputting.innerHTML = localStorage["output"];
+						},
+						error: function()
+						{
+							alert("Failed To Retrieve Roster Data");
+						}
+					});
+									}
+
+									// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "MBowling"){
+						SportsAPI.getMensBowling(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "WBowling"){
+						SportsAPI.getWomensBowling(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "MCrossCountry"){
+						SportsAPI.getMensCrossCountry(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "WCrossCountry"){
+						SportsAPI.getWomensCrossCountry(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "MGolf"){
+						SportsAPI.getMensGolf(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "WGolf"){
+						SportsAPI.getWomensGolf(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "MTrack"){
+						SportsAPI.getMensTrack(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "WTrack"){
+						SportsAPI.getWomensTrack(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "MTennis"){
+						SportsAPI.getMensTennis(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "WTennis"){
+						SportsAPI.getWomensTennis(
+		{
+			
+			success: function(json)
+			{
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		}
+						// New Roster Change. Delete from here to go back to previous edition.
+						if(sport == "Cheerleading"){
+						SportsAPI.getCheerleading(
+		{
+			
+			success: function(json)
+			{
+				// alert(JSON.stringify(json));
+				// alert(typeof(json[0].ID));
+				 var oid = localStorage["roster_id"];
+				
+				 for(var i = 0;i<json.length;i++){
+				var className = "";
+				var pname = json[i]["Name"];
+				var pnumber = json[i]["Number"];
+				var cname = json[i]["Class"];
+				var pos = json[i]["Position"];
+				var pheight= json[i]["Height"];
+				var pweight= json[i]["Weight"];
+				var htown= json[i]["Hometown"];
+				var picLink = json[i]["Picture"];
+				
+				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				if(json[i]["Class"] == "SR"){
+					className = "Senior";
+					}
+				if(json[i]["Class"] == "JR"){
+					className = "Junior";
+					}
+				if(json[i]["Class"] == "SO"){
+					className = "Sophomore";
+					}
+				if(json[i]["Class"] == "FR"){
+					className = "Freshmen";
+					}
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				// alert(output);
+				 localStorage["output"]=output;
+				 
+				 }
+				 //alert(localStorage["output"]);
+				 var outputting = document.getElementById('roster');
+		   		 outputting.innerHTML = localStorage["output"];
+			},
+			error: function()
+			{
+				alert("Failed To Retrieve Roster Data");
+			}
+		});
+		
+						}// Bottom of roster additions.
+
+						 
+					
+				}
+				
+			
+			$(document).one('pageshow', "#rosterdata",function () {
+					   pickSport();
+					   var sport = localStorage["parameter"];
+					   //var name = localStorage["sportName"];
+					   //$('#rosterHeader').html(name);
+					   
+					   
+			          getAjax(sport);
+					  
+			        });        
+			</script>
+							
+			<style>
+				table{-webkit-overflow-scrolling: touch;}
+				table tr{height:3%;}
+				table td{padding-left:6%;padding-bottom:2%;padding-top:0%;background-color:#472d16; font-size:20px;text-shadow:none;color:white; width:100%; height:5%;text-overflow: ellipsis;}	  
+			</style>
+			
+	  		<script>
+			  /*
+			  
+				This function takes in a player id from the table row and then 
+				changes the page so that that chosen player is displayed with 
+				their respective information.
+				
+			  */
+								function getPlayer(id){
+									localStorage["roster_id"] = id;
+									$.mobile.changePage('viewPlayer.html', { transition: 'pop', role: 'dialog' });
+									}
+								
+			</script>
+	                    
+	        <table style="margin-left:-9%;width:127%;height:100%;font-size:20px;margin-top:-5%;background-color:black" id="roster"></table>
+		</div>
+	</div>
+</body>
+    <style>
+	tr:first-child{
+		margin-top:0px;
+		padding-top: 0px;
+		color:red;
+		}
+	</style>
+  
+</html>
