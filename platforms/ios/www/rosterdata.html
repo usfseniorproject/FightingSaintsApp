@@ -153,7 +153,8 @@
 								var cname = json[i]["Class"];
 								var htown= json[i]["Hometown"];
 								var picLink = json[i]["Picture"];
-								addRoster(pname,pnumber,cname,"","",cname,oid,htown,picLink);
+								addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
+								//third double quote is "cname"
 								
 								var className = "";
 								if(json[i]["Class"] == "SR"){
@@ -739,13 +740,14 @@
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
+				/*var pos = json[i]["Position"];
 				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
+				var pweight= json[i]["Weight"];*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
+				//pos, pheight, pweight removed
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -789,13 +791,14 @@
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
+				/*var pos = json[i]["Position"];
 				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
+				var pweight= json[i]["Weight"];*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
+				//pos, pheight, pweight removed
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -839,13 +842,14 @@
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
+				/*var pos = json[i]["Position"];
 				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
+				var pweight= json[i]["Weight"];*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
+				//pos, pheight, pweight removed
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -889,13 +893,14 @@
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
+				/*var pos = json[i]["Position"];
 				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
+				var pweight= json[i]["Weight"];*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
+				//pos, pheight, pweight removed
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -938,13 +943,14 @@
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
+				/*var pos = json[i]["Position"];
 				var pheight= json[i]["Height"];
 				var pweight= json[i]["Weight"];
+				*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -988,13 +994,14 @@
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
+				/*var pos = json[i]["Position"];
 				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
+				var pweight= json[i]["Weight"];*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
+				//pos, pheight, pweight removed
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -1045,6 +1052,7 @@
 				var picLink = json[i]["Picture"];
 				
 				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				//removed pweight
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -1093,6 +1101,7 @@
 				var picLink = json[i]["Picture"];
 				
 				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
@@ -1136,13 +1145,14 @@
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
+				/*var pos = json[i]["Position"];
 				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
+				var pweight= json[i]["Weight"];*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+				addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
+				//pos, pheight, pweight removed
 				if(json[i]["Class"] == "SR"){
 					className = "Senior";
 					}
