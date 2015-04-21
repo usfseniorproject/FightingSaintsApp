@@ -16,6 +16,9 @@
 	min-height:100% !important;
 }
 
+#headerpic{
+		margin-top:4% !important;
+}
 @media (max-width: 1080px){ 
     #headerpic{
 		height: 15% !important;
