@@ -60,6 +60,7 @@
 							$('.men').show();
 							$('.women').hide();
 							$('.coed').hide();
+							$('.spacer').hide();
 							
 						}
 						else if(localStorage["typeChoice"] == "women")
@@ -67,10 +68,12 @@
 							$('.women').show();
 							$('.men').hide();
 							$('.coed').hide();
+							$('.spacer').hide();
 						}
 						else if(localStorage["typeChoice"] == "coed")
 						{
 							$('.coed').show();
+							$('.spacer').show();
 							$('.women').hide();
 							$('.men').hide();
 						}
@@ -101,6 +104,7 @@
 	                    <tr class="women"><td class="WTrack"><span>Women's Track</span></td></tr>
 	                    <tr class="women"><td class="Volleyball"><span>Volleyball</span></td></tr>
 	                    <tr class="coed"><td class="Cheerleading"><span>Cheerleading</span></td></tr>
+	                    <tr class="spacer" style="height:90%;"><td class="hidden"></td></tr>
                     </tbody>
                 </table> 
   			</div><!--End of Table-->
