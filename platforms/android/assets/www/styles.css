@@ -5,15 +5,20 @@
 -webkit::scrollbar{
 	width:0;
 }
-		
-.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {
-	height:100% !important;
-}
 
 .ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page {
 	height:100% !important;
+	min-height:100% !important;
 }
 
+.ui-mobile .ui-page{
+	height:100% !important;
+	min-height:100% !important;
+}
+
+#headerpic{
+		margin-top:4% !important;
+}
 @media (max-width: 1080px){ 
     #headerpic{
 		height: 15% !important;
@@ -21,8 +26,7 @@
 		}
 	table{
 		margin-top:0% !important;
-		height:480px !important;
-		
+		height: 100% !important;		
 	}
 	#mugshot{
 		max-height:230px !important;
@@ -41,12 +45,8 @@
 @media only screen 
 and (max-device-height : 480px) 
 {
- 
-	footer{
+		#rosterHolder{
 		background-color:white;
-		}
-	#rosterHolder{
-		background-color:white;
-		height:370px !important;
+		height:100% !important;
 		}
 }

@@ -176,8 +176,6 @@ Rosters.webdb.addRoster = function (pname,pnumber,cname,pos,pheight,pweight,oid,
 	}
 	if(tableName == "baseball"){
 	db.transaction(function(e){
-		
-		
 		e.executeSql("INSERT INTO baseball(Name,Player_Number,Class_Name,Position,Height,Weight,Hometown,OurID,picLink) VALUES (?,?,?,?,?,?,?,?,?)",
 			[name,player_number,class_name,position,height,weight,hometown,ourid,picLink],
 			Rosters.webdb.onSuccess,
@@ -226,7 +224,7 @@ Rosters.webdb.addRoster = function (pname,pnumber,cname,pos,pheight,pweight,oid,
 		});
 	}
 	if (tableName == "m_bowling") {
-		db.transaction.function(e) {
+		db.transaction(function(e) {
 			e.executeSql("INSERT INTO m_bowling(Number, Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?,?)",
 				[number, name, Class, hometown, High_School,picLink],
 				Rosters.webd.onSuccess,
@@ -234,7 +232,7 @@ Rosters.webdb.addRoster = function (pname,pnumber,cname,pos,pheight,pweight,oid,
 		});
 	}
 	if (tableName == "w_bowling") {
-		db.transaction.function(e) {
+		db.transaction(function(e) {
 			e.executeSql("INSERT INTO w_bowling(Number, Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?,?)",
 				[number, name, Class, hometown, High_School,picLink],
 				Rosters.webd.onSuccess,
