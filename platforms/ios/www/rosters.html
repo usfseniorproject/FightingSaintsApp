@@ -81,7 +81,12 @@
 					
 			</script>
 			
-			<!--Table with holder for each of the sports in the current roster-->
+			<!--Table with holder for each of the sports in the current roster. 
+			The class for <tr> is used by the jQuery script on this page to determine 
+			what to hide based on what the user picked on the previous page.
+			The "spacer" entry is used in conjunction with the coed entry to manage table entry size.
+			This is because table entryies will attempt to take up the entire space of the table area
+			no matter its given space limitation the entry is given -->
     		<div id="rosterHolder" style="overflow-x:hidden;overflow-y:scroll;width:115%;height:100%;margin-left:-6.5%;">
  				 <table style="width:115%;height:100%;font-size:13px;margin-top:-5.75%;background-color:#edb32e;" id="sportTypes">
                     <tbody>
