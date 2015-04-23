@@ -561,7 +561,7 @@ var SportsAPI = {
 		{
 			$.ajax(
 			{
-				url:localStorage["ServerAddress"]+"/womens_cross_country",
+				url:localStorage["ServerAddress"]+"/womens_cross_country_roster",
 				dataType: 'jsonp',
 				success:function(json)
 				{

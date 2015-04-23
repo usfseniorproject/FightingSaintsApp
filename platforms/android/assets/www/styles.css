@@ -19,6 +19,10 @@
 #headerpic{
 		margin-top:4% !important;
 }
+
+.rosterTypeHolder{
+	background-color:none !important;
+}
 @media (max-width: 1080px){ 
     #headerpic{
 		height: 15% !important;

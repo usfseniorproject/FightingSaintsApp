@@ -1,4 +1,3 @@
-
 var Rosters = {};
 Rosters.webdb = {};
 Rosters.webdb.db = null;
@@ -13,7 +12,7 @@ Rosters.webdb.open = function (){
 */
 Rosters.webdb.createTable = function (){
 	var db = Rosters.webdb.db;
-	
+	try{
 	db.transaction(function(e) {
 	var query = "DROP TABLE IF EXISTS m_bowling";
     e.executeSql(query);
@@ -35,27 +34,60 @@ Rosters.webdb.createTable = function (){
     e.executeSql(query);
     /***************4-7-2015*********************/
     var query = "DROP TABLE IF EXISTS m_track";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS w_track";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS m_cross_country";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS w_cross_country";
-    e.executeSql(query);
-    var query = "DROP TABLE IF EXISTs m_bowling";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+    var query = "DROP TABLE IF EXISTS m_bowling";
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS w_bowling";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS m_golf";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS w_golf";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS m_tennis";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS w_tennis";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
     var query = "DROP TABLE IF EXISTS cheerleading";
-    e.executeSql(query);
+    e.executeSql(query,
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
 	
 	
 	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Hometown TEXT, OurID TEXT, picLink TEXT)", []);
@@ -68,19 +100,55 @@ Rosters.webdb.createTable = function (){
 	e.executeSql("CREATE TABLE IF NOT EXISTS baseball(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS football(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	/*************************4-7-2015*************************************/
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_track(ID INTEGER PRIMARY KET ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, piclink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS w_track(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_cross_country(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS w_cross_country(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC, Number INTEGER, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS w_bowling(ID INTEGER PRIMARY KEY ASC, Number INTEGER, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_golf(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS w_golf(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_tennis(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Position TEXT, Height TEXT, Weight TEXT, Hometown TEXT, High_School TEXT, picLink TEXT",[]);
-	e.executeSql("CREATE TABLE IF NOT EXISTS w_tennis(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Position TEXT, Height TEXT, Weight TEXT, Hometown TEXT, High_School TEXT, picLink TEXT",[]);
-	e.executeSql("CREATE TABLE IF NOT EXISTS cheerleading(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class TEXT, Hometown TEXT, High_School TEXT, picLink TEXT", []);
+	e.executeSql("CREATE TABLE IF NOT EXISTS m_track(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Hometown TEXT, piclink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS w_track(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS m_cross_country(ID INTEGER PRIMARY KEY ASC, Class_Name TEXT, Class TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS w_cross_country(ID INTEGER PRIMARY KEY ASC, Class_Name TEXT, Class TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC, Number INTEGER, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS w_bowling(ID INTEGER PRIMARY KEY ASC, Number INTEGER, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS m_golf(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS w_golf(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS m_tennis(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Position TEXT, Height TEXT, Weight TEXT, Hometown TEXT, picLink TEXT)",[],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
+	e.executeSql("CREATE TABLE IF NOT EXISTS w_tennis(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Position TEXT, Height TEXT, Weight TEXT, Hometown TEXT, picLink TEXT)",[],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError);
+	e.executeSql("CREATE TABLE IF NOT EXISTS cheerleading(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	Rosters.webdb.onSuccess,
+	Rosters.webdb.onError
+	);
 	
 	});
+	}
+	catch(e){
+		console.log(e);	
+	}
 }
 
 
@@ -193,90 +261,90 @@ Rosters.webdb.addRoster = function (pname,pnumber,cname,pos,pheight,pweight,oid,
 	/***********4-7-2015************/
 	if (tableName == "m_track") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO m_track(Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-					[name, Class, hometown, High_School, picLink ],
-					Rosters.webd.onSuccess,
-					Rosters.webd.onError)
+			e.executeSql("INSERT INTO m_track(Name, Class_Name, Hometown, picLink) VALUES (?,?,?,?)",
+					[name, class_name, hometown,picLink ],
+					Rosters.webdb.onSuccess,
+					Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "w_track") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO w_track(Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-					[name, Class, hometown, High_School, picLink ],
-					Rosters.webd.onSuccess,
-					Rosters.webd.onError)
+			e.executeSql("INSERT INTO w_track(Name, Class_Name, Hometown,picLink) VALUES (?,?,?,?)",
+					[name, class_name, hometown, picLink ],
+					Rosters.webdb.onSuccess,
+					Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "m_cross_country") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO m_cross_country(Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-				[name, Class,hometown,High_School, piclink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO m_cross_country(Name, Class_Name, Hometown,picLink) VALUES (?,?,?,?)",
+				[name, class_name,hometown,piclink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "w_cross_country") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO w_cross_country(Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-				[name, Class,hometown,High_School, piclink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO w_cross_country(Name, Class_Name, Hometown, picLink) VALUES (?,?,?,?)",
+				[name, class_name,hometown,piclink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "m_bowling") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO m_bowling(Number, Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?,?)",
-				[number, name, Class, hometown, High_School,picLink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO m_bowling(Number, Name, Class_Name, Hometown, picLink) VALUES (?,?,?,?,?)",
+				[number, name, class_name, hometown, picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "w_bowling") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO w_bowling(Number, Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?,?)",
-				[number, name, Class, hometown, High_School,picLink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO w_bowling(Number, Name, Class_Name, Hometown, picLink) VALUES (?,?,?,?,?)",
+				[number, name, class_name, hometown, picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "m_golf") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO m_golf(Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-				[name, Class, hometown, High_School, picLink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO m_golf(Name, Class_Name, Hometown, picLink) VALUES (?,?,?,?)",
+				[name, class_name, hometown, picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "w_golf") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO w_golf(Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-				[name, Class, hometown, High_School, picLink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO w_golf(Name, Class_Name, Hometown, picLink) VALUES (?,?,?,?)",
+				[name, class_name, hometown, picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "m_tennis") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO m_tennis(Name, Class, Position, Height, Weight, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-				[name, Class, position, height, weight, hometown, High_School, picLink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO m_tennis(Name, Class_Name, Position, Height, Weight, Hometown, picLink) VALUES (?,?,?,?,?,?,?)",
+				[name, class_name, position, height, weight, hometown, picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "w_tennis") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO w_tennis(Name, Class, Position, Height, Weight, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-				[name, Class, position, height, weight, hometown, High_School, picLink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO w_tennis(Name, Class_Name, Position, Height, Weight, Hometown, picLink) VALUES (?,?,?,?,?,?,?)",
+				[name, class_name, position, height, weight, hometown,picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 	if (tableName == "cheerleading") {
 		db.transaction(function(e) {
-			e.executeSql("INSERT INTO cheerleading(Name, Class, Hometown, High_School, picLink) VALUES (?,?,?,?,?)",
-				[name, Class, hometown, High_School, picLink],
-				Rosters.webd.onSuccess,
-				Rosters.webd.onError)
+			e.executeSql("INSERT INTO cheerleading(Name, Class_Name, Hometown, picLink) VALUES (?,?,?,?)",
+				[name, class_name, hometown, picLink],
+				Rosters.webdb.onSuccess,
+				Rosters.webdb.onError)
 		});
 	}
 }

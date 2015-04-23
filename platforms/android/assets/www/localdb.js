@@ -47,9 +47,9 @@ Rosters.webdb.createTable = function (){
     var query = "DROP TABLE IF EXISTS w_bowling";
     e.executeSql(query);
     var query = "DROP TABLE IF EXISTS m_golf";
-    e.execute(query);
+    e.executeSql(query);
     var query = "DROP TABLE IF EXISTS w_golf";
-    e.excuteSql(query);
+    e.executeSql(query);
     var query = "DROP TABLE IF EXISTS m_tennis";
     e.executeSql(query);
     var query = "DROP TABLE IF EXISTS w_tennis";
