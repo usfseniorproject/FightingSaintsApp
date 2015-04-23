@@ -183,7 +183,7 @@
 						});
 					}
 					if(sport == "WBowling"){
-						SportsAPI.getWomensBowlingRoster({
+						SportsAPI.getWomensBowling({
 							success: function(json)
 							{
 								console.log(json);
@@ -212,10 +212,6 @@
 									className = "Freshmen";
 									}
 								 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Bowling'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
-							
-
-								 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
-								// alert(output);
 
 								 localStorage["output"]=output;
 								 
@@ -266,7 +262,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -314,7 +310,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -362,7 +358,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -411,7 +407,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -459,7 +455,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -508,7 +504,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -556,7 +552,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -605,7 +601,7 @@
 							if(json[i]["Class"] == "FR"){
 								className = "Freshmen";
 								}
-							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+							 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
 							// alert(output);
 							 localStorage["output"]=output;
 							 
@@ -621,110 +617,9 @@
 					});
 									}
 
-									// New Roster Change. Delete from here to go back to previous edition.
-						if(sport == "MBowling"){
-						SportsAPI.getMensBowling(
-		{
-			
-			success: function(json)
+		if(sport == "MCrossCountry"){
+			SportsAPI.getMensCrossCountry(
 			{
-				// alert(JSON.stringify(json));
-				// alert(typeof(json[0].ID));
-				 var oid = localStorage["roster_id"];
-				
-				 for(var i = 0;i<json.length;i++){
-				var className = "";
-				var pname = json[i]["Name"];
-				var pnumber = json[i]["Number"];
-				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
-				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
-				var htown= json[i]["Hometown"];
-				var picLink = json[i]["Picture"];
-				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
-				if(json[i]["Class"] == "SR"){
-					className = "Senior";
-					}
-				if(json[i]["Class"] == "JR"){
-					className = "Junior";
-					}
-				if(json[i]["Class"] == "SO"){
-					className = "Sophomore";
-					}
-				if(json[i]["Class"] == "FR"){
-					className = "Freshmen";
-					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
-				// alert(output);
-				 localStorage["output"]=output;
-				 
-				 }
-				 //alert(localStorage["output"]);
-				 var outputting = document.getElementById('roster');
-		   		 outputting.innerHTML = localStorage["output"];
-			},
-			error: function()
-			{
-				alert("Failed To Retrieve Roster Data");
-			}
-		});
-		}
-						// New Roster Change. Delete from here to go back to previous edition.
-						if(sport == "WBowling"){
-						SportsAPI.getWomensBowling(
-		{
-			
-			success: function(json)
-			{
-				// alert(JSON.stringify(json));
-				// alert(typeof(json[0].ID));
-				 var oid = localStorage["roster_id"];
-				
-				 for(var i = 0;i<json.length;i++){
-				var className = "";
-				var pname = json[i]["Name"];
-				var pnumber = json[i]["Number"];
-				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
-				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
-				var htown= json[i]["Hometown"];
-				var picLink = json[i]["Picture"];
-				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
-				if(json[i]["Class"] == "SR"){
-					className = "Senior";
-					}
-				if(json[i]["Class"] == "JR"){
-					className = "Junior";
-					}
-				if(json[i]["Class"] == "SO"){
-					className = "Sophomore";
-					}
-				if(json[i]["Class"] == "FR"){
-					className = "Freshmen";
-					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
-				// alert(output);
-				 localStorage["output"]=output;
-				 
-				 }
-				 //alert(localStorage["output"]);
-				 var outputting = document.getElementById('roster');
-		   		 outputting.innerHTML = localStorage["output"];
-			},
-			error: function()
-			{
-				alert("Failed To Retrieve Roster Data");
-			}
-		});
-		}
-						// New Roster Change. Delete from here to go back to previous edition.
-						if(sport == "MCrossCountry"){
-						SportsAPI.getMensCrossCountry(
-		{
 			
 			success: function(json)
 			{
@@ -757,7 +652,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -808,7 +703,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				  output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -859,8 +754,8 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
-				// alert(output);
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
+				
 				 localStorage["output"]=output;
 				 
 				 }
@@ -910,7 +805,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -960,7 +855,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -1011,7 +906,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -1062,7 +957,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -1111,7 +1006,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -1162,7 +1057,7 @@
 				if(json[i]["Class"] == "FR"){
 					className = "Freshmen";
 					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"'  style='padding-top:-20px;'class='Basketball'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#edb12d; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>" + "#"+ json[i]["Number"]+ "  " + json[i].Name +  " - " +json[i].Position+ "</p></td></a></tr>";
+				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
 				// alert(output);
 				 localStorage["output"]=output;
 				 

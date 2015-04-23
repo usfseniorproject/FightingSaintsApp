@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>91A00D16-38DE-4EA2-A08B-8A9BC028F0C8</string>
 	<key>IDESourceControlProjectName</key>
-	<string>USF Athletics</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3C46753B78B7BEEA1790FAC5AF1E6F3F14A63AA2</key>
 		<string>https://github.com/usfseniorproject/FightingSaintsApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/ios/USF Athletics.xcodeproj</string>
+	<string>platforms/ios/USF Athletics.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3C46753B78B7BEEA1790FAC5AF1E6F3F14A63AA2</key>
