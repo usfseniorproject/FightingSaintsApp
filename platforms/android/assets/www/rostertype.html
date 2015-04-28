@@ -23,7 +23,7 @@
 		</div>
 		
 		<!--"About App" Popup Content, scripts contained in popupEvents.js-->
-		<div data-role="panel" class="menupanel" data-theme="b" style="position:absolute;z-index: 99" data-display="overlay">
+		<div data-role="panel" class="menupanel" data-theme="b" style="height: 123%;position:absolute;z-index: 99" data-display="overlay">
 			<div class="panel-content" style="padding: 1em;margin-top: -12%;">
 				<a href="homepage.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/home.png" width=21% style="float:left;">Home Page</a>
 				<a href="rostertype.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/roster.png" width=20% style="float:left;">Sports Rosters</a>
@@ -37,7 +37,7 @@
 			<script src="js/panelEvents.js"></script>
 			
 			<script>
-			// When a link below is clicked a string identifiying the choice is put into local storage.
+			// When a link/div below is clicked a string identifiying the choice is put into local storage.
 			// Used for hiding appropriate table entries on the rosters page.
 		
 			$('#MenSportHolder').on('click',function(){
@@ -55,15 +55,14 @@
 			</script>
 			
 			<!--Links used to sort between the different types of Sports/Rosters (Mens, Womens, Co-Ed)-->
-			<div class="pickbuttons" style="height:100%;background-color:#edb32e;">
+			<div class="pickbuttons" style="width: 101%;height:100%;background-color:#edb32e;margin-left:-0.5%">
             	<div id="MenSportHolder" style="background-color: #472d16;width:100%;height:35%;background-image:url('img/LoginPics/Nov.jpg');background-size:cover;background-position-y: 30%;box-shadow: inset 0px 0px 35px #000000;">
                 	<a href="#" id="MenSport" data-transition="slide" style="margin:0 auto;width:160px;display:block;text-decoration:none;font-size:25px;border-width: 0px;color:white;text-shadow:5px 5px 5px #000000;-webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black;padding-top:20%;">Men's Sports</a>
                 </div>
-				<div id="WomenSportHolder" class="rosterTypeHolder" style="background-color: #472d16;width:100%;height:35%;margin-top:-1.8%;background-image:url('img/LoginPics/Sep.jpg');
-background-size:cover;background-position-y: 30%;box-shadow: inset 0px 0px 35px #000000;">
+				<div id="WomenSportHolder" style="background-color: #472d16;width:100%;height:35%;margin-top:-1.8%;background-image:url('img/LoginPics/Sep.jpg');background-size:cover;background-position-y: 30%;box-shadow: inset 0px 0px 35px #000000;">
 					<a href="#" id="WomenSport" data-transition="slide" style="margin:0 auto;width:200px;display:block;text-decoration:none;font-size:25px;border-width: 0px;color:white;text-shadow:5px 5px 5px #000000;-webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black;padding-top:20%;">Women's Sports</a>
                 </div>
-                <div id="CoedSportHolder"  style="background-color: #472d16;width:100%;height:35%;margin-top:-1.8%;background-image:url('img/LoginPics/Dec.jpg');background-size:cover;background-position-y: 30%;box-shadow: inset 0px 0px 35px #000000;">
+                <div id="CoedSportHolder" style="background-color: #472d16;width:100%;height:35%;margin-top:-1.8%;background-image:url('img/LoginPics/Dec.jpg');background-size:cover;background-position-y: 30%;box-shadow: inset 0px 0px 35px #000000;">
 					<a href="#" id="CoedSport" data-transition="slide" style="margin:0 auto;width:160px;display:block;text-decoration:none;font-size:25px;border-width: 0px;color:white;text-shadow:5px 5px 5px #000000;-webkit-text-stroke-width: 0.5px;-webkit-text-stroke-color: black;padding-top:20%;">Co-ed Sports</a>
                 </div>
 			</div>
