@@ -74,9 +74,7 @@
             <script src="js/panelEvents.js"></script>
             <script src="js/popupEvents.js"></script>
 			<script src="localdb_news.js"></script>
-			<script src="js/aws-sdk-2.0.0-rc.14.min.js"></script>
-			
-									
+			<script src="js/aws-sdk.min.js"></script>
 			<script>
 			
 			if(localStorage.getItem("firstTime") === null){
@@ -233,9 +231,26 @@
 						}
 					});
 					}
+			var table = new AWS.DynamoDB({params: {TableName: 'USFAthletics_AuthAdmins'}});
+			function verifyAdmin(){
+					table.scan({AttributesToGet:['AdminID'],ScanFilter:{Email:{ComparisonOperator:'EQ',AttributeValueList:[{S:localStorage["email"]}],}}},function(err,data){
+			if(err){
+				console.log(err);
+			}
+			else{
+				if(data.Items.length == 0){
+					sessionSt = false;
+				}
+				else{
+					adminTools.isAuthAdmin = true;
+				}
+			}
+		});
+			}
 				
 			</script>
 			<script>
+						
 			          getAjax();
 					  
 			/*
