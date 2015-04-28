@@ -332,44 +332,6 @@ var SportsAPI = {
 			});
 		}
 	},
-
-	/*getMensBowling : function (callObj) 
-	{
-		if(callObj)
-		{
-			$.ajax(
-			{
-				url:localStorage["ServerAddress"]+"/Mens_Bowling_Roster",
-				dataType: 'jsonp',
-				success:function(json)
-				{
-					if($.isFunction(callObj))
-					{
-						callObj(json, true);
-					}
-					else if(callObj.success && $.isFunction(callObj.success))
-					{
-						callObj.success(json);
-					}
-				},
-				error:function()
-				{
-					if($.isFunction(callObj))
-					{
-						callObj(json, false);
-					}
-					else if(callObj.error && $.isFunction(callObj.error))
-					{
-						callObj.error();
-					}
-					else if(callObj.fail && $.isFunction(callObj.fail))
-					{
-						callObj.fail();
-					}
-				}
-			});
-		}
-	},*/
 	getMensCrossCountry : function (callObj) 
 	{
 		if(callObj)
@@ -456,6 +418,7 @@ var SportsAPI = {
 				{
 					if($.isFunction(callObj))
 					{
+						
 						callObj(json, true);
 					}
 					else if(callObj.success && $.isFunction(callObj.success))
@@ -485,6 +448,7 @@ var SportsAPI = {
 	{
 		if(callObj)
 		{
+			
 			$.ajax(
 			{
 				url:localStorage["ServerAddress"]+"/mens_tennis_roster",
@@ -502,6 +466,7 @@ var SportsAPI = {
 				},
 				error:function()
 				{
+					alert("Error");
 					if($.isFunction(callObj))
 					{
 						callObj(json, false);

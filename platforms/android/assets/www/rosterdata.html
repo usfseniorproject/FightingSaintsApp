@@ -89,6 +89,7 @@
 									localStorage["tableName"] = "w_golf";
 									}
 								if(sport == "MTennis"){
+									
 									localStorage["sportName"] = "Men's Tennis";
 									localStorage["tableName"] = "m_tennis";
 									}
@@ -98,11 +99,11 @@
 									}
 								if(sport == "MCrossCountry"){
 									localStorage["sportName"] = "Men's Cross Country";
-									localStorage["tableName"] = "m_crosscountry";
+									localStorage["tableName"] = "m_cross_country";
 									}
 								if(sport == "WCrossCountry"){
 									localStorage["sportName"] = "Women's Cross Country";
-									localStorage["tableName"] = "w_crosscountry";
+									localStorage["tableName"] = "w_cross_country";
 									}
 								if(sport == "MBowling"){
 									localStorage["sportName"] = "Men's Bowling";
@@ -826,19 +827,13 @@
 			
 			success: function(json)
 			{
-				// alert(JSON.stringify(json));
-				// alert(typeof(json[0].ID));
-				 var oid = localStorage["roster_id"];
 				
+				 var oid = localStorage["roster_id"];
 				 for(var i = 0;i<json.length;i++){
 				var className = "";
 				var pname = json[i]["Name"];
 				var pnumber = json[i]["Number"];
 				var cname = json[i]["Class"];
-				/*var pos = json[i]["Position"];
-				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
-				*/
 				var htown= json[i]["Hometown"];
 				var picLink = json[i]["Picture"];
 				
@@ -856,6 +851,7 @@
 					className = "Freshmen";
 					}
 				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
+				
 				// alert(output);
 				 localStorage["output"]=output;
 				 
@@ -928,38 +924,37 @@
 			
 			success: function(json)
 			{
-				// alert(JSON.stringify(json));
 				// alert(typeof(json[0].ID));
 				 var oid = localStorage["roster_id"];
 				
 				 for(var i = 0;i<json.length;i++){
-				var className = "";
-				var pname = json[i]["Name"];
-				var pnumber = json[i]["Number"];
-				var cname = json[i]["Class"];
-				var pos = json[i]["Position"];
-				var pheight= json[i]["Height"];
-				var pweight= json[i]["Weight"];
-				var htown= json[i]["Hometown"];
-				var picLink = json[i]["Picture"];
-				
-				addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
-				//removed pweight
-				if(json[i]["Class"] == "SR"){
-					className = "Senior";
-					}
-				if(json[i]["Class"] == "JR"){
-					className = "Junior";
-					}
-				if(json[i]["Class"] == "SO"){
-					className = "Sophomore";
-					}
-				if(json[i]["Class"] == "FR"){
-					className = "Freshmen";
-					}
-				 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
-				// alert(output);
-				 localStorage["output"]=output;
+					var className = "";
+					var pname = json[i]["Name"];
+					var pnumber = json[i]["Number"];
+					var cname = json[i]["Class"];
+					var pos = json[i]["Position"];
+					var pheight= json[i]["Height"];
+					var pweight= json[i]["Weight"];
+					var htown= json[i]["Hometown"];
+					var picLink = json[i]["Picture"];
+					
+					addRoster(pname,pnumber,cname,pos,pheight,pweight,oid,htown,picLink);
+					//removed pweight
+					if(json[i]["Class"] == "SR"){
+						className = "Senior";
+						}
+					if(json[i]["Class"] == "JR"){
+						className = "Junior";
+						}
+					if(json[i]["Class"] == "SO"){
+						className = "Sophomore";
+						}
+					if(json[i]["Class"] == "FR"){
+						className = "Freshmen";
+						}
+					 output += "<tr onclick='getPlayer(this.id)' id='"+ json[i].ID +"' style='padding-top:-20px;'class='WCrossCountry'><td id='"+ json[i].ID +"' style='padding-left:6%;padding-bottom:0%;padding-top:0%;background-color:#472d16; font-family:superclare;font-size:15px;text-shadow:none;color:white; width:100%; height:4%;border-bottom:40px #FFFFFF;text-overflow: ellipsis;'><p style='text-overflow: ellipsis;white-space: nowrap;'>"+ json[i].Name+"</p></td></a></tr>";
+					// alert(output);
+					 localStorage["output"]=output;
 				 
 				 }
 				 //alert(localStorage["output"]);
@@ -1082,12 +1077,7 @@
 			$(document).one('pageshow', "#rosterdata",function () {
 					   pickSport();
 					   var sport = localStorage["parameter"];
-					   //var name = localStorage["sportName"];
-					   //$('#rosterHeader').html(name);
-					   
-					   
-			          getAjax(sport);
-					  
+			           getAjax(sport);
 			        });        
 			</script>
 			
@@ -1106,10 +1096,10 @@
 				their respective information.
 				
 			  */
-								function getPlayer(id){
-									localStorage["roster_id"] = id;
-									$.mobile.changePage('viewPlayer.html', { transition: 'pop', role: 'dialog' });
-									}
+			function getPlayer(id){
+				localStorage["roster_id"] = id;
+				$.mobile.changePage('viewPlayer.html', { transition: 'pop', role: 'dialog' });
+				}
 								
 			</script>
 	        <!--Table stylization hase three different parts on this page, this is part two-->     
