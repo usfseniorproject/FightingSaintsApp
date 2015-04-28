@@ -55,7 +55,7 @@
 			    	<h1>About</h1>
 			    </div>
 			    <div role="main" class="ui-content">
-			    	<p>Property of the USF Athetic Department of the University of Saint Francis in Joliet, Illinois.</p>
+			    	<p>Property of the USF Athletic Department of the University of Saint Francis in Joliet, Illinois.</p>
 			    	<p>If you missed the swipe tutorial and would like to play it again, press the button below.</p>
 			        <a id="replayTut" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Replay Tutorial</a>
 					<p>Developed by USF Computer Science students.</p>
@@ -118,8 +118,6 @@
 			},7000);
 			
 			function tokenHandler (result) {
-			   console.log("TOKEN");
-			   alert(result);
 			    var params = {
 				  PlatformApplicationArn: 'arn:aws:sns:us-east-1:370339223087:app/APNS_SANDBOX/USF_Athletics', // required
 				  Token: result // required

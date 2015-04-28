@@ -42,12 +42,67 @@
 				// This function retreives a specific players information.
 				
 				function getPlayer(tx, rs) {
-				    var num =  rs.rows.item(0).Player_Number;
-					num = num.substring(0,num.indexOf("."));
+					try{
+						var num =  rs.rows.item(0).Player_Number;
+						num = num.substring(0,num.indexOf("."));
+					}
+					catch(e){
+						
+					}
 					//var count = localStorage["count"]; 
 					headerText.innerHTML = "#" + num + " " + rs.rows.item(0).Name;
 					switch(localStorage["tableName"]){
 						case "m_bowling":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "w_bowling":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "w_cross_country":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "w_track":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "m_cross_country":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "m_track":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "w_tennis":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "m_tennis":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "w_golf":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "m_golf":
+							$('#Position').hide();
+							$('#Height').hide();
+							$('#headerText').text(rs.rows.item(0).Name);
+						break;
+						case "cheerleading":
 							$('#Position').hide();
 							$('#Height').hide();
 							$('#headerText').text(rs.rows.item(0).Name);
@@ -60,6 +115,7 @@
 					var weight = rs.rows.item(0).Weight;
 					var height = rs.rows.item(0).Height;
 					var className = rs.rows.item(0).Class_Name;
+					console.log(rs.rows.item(0).picLink);
 					var picLink = rs.rows.item(0).picLink;
 					var temp = "";
 					var temp2 = "";
