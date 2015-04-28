@@ -47,7 +47,7 @@
 		    	<a href="calendar.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/schedule.png" width=19%  style="float:left;">Calender</a>
 		    	<a href="livestats.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/livestats.png" width=21% style="float:left;">Live Stats</a>
 		    	<a href="#aboutPopup" data-rel="popup" class="ui-btn" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/about.png" width=18% style="float:left;">About App</a>
-		    	<a href="notification.html" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;"><img src="img/push.png" width=21% style="float:left;">Notifications</a>
+		    	<a href="notification.html" id="notificationButton" class="ui-btn" data-transition="slide" style="line-height: 40px; margin-left:-13%; margin-right:-13%;display:none;"><img src="img/push.png" width=21% style="float:left;">Notifications</a>
 			</div>
 			
 			<!--"About App" Popup Content, scripts contained in popupEvents.js-->
@@ -74,9 +74,7 @@
             <script src="js/panelEvents.js"></script>
             <script src="js/popupEvents.js"></script>
 			<script src="localdb_news.js"></script>
-			<script src="js/aws-sdk-2.0.0-rc.14.min.js"></script>
-			
-									
+			<script src="js/aws-sdk.min.js"></script>
 			<script>
 			
 			if(localStorage.getItem("firstTime") === null){
@@ -110,38 +108,116 @@
 			
 			window.setTimeout(function(){
 				if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
-						pushNotification.register(successHandler, errorHandler, {"senderID":"1090696343696","ecb":"onNotification"});		// 
+						pushNotification.register(successHandler, errorHandler, {"senderID":"1090696343696","ecb":"onNotification"});
 					} 
 					else {
 						console.log("TRYING TO REGISTER FOR PUSH");
 						pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	
 				}
 			},7000);
+			 function onNotification(e) {
+				switch(e.event)
+				{
+				case 'registered':
+					if ( e.regid.length > 0 )
+					{
+						$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+						// Your GCM push server needs to know the regID before it can push to this device
+						// here is where you might want to send it the regID for later use.
+						console.log("regID = " + e.regid);
+						  var params = {
+							  PlatformApplicationArn: 'arn:aws:sns:us-east-1:370339223087:app/GCM/USF_Athletics_Android', 
+							  Token: e.regid // required
+							};
+							
+							sns.createPlatformEndpoint(params, function(err, data) {
+							  if (err) {
+								  console.log("CAN'T CREATE PLATFORM ENDPOINT");
+								  console.log(err, err.stack);
+								  } 
+								  
+							  else{
+								  localStorage["ARN"] = data.EndpointArn;
+								  var subscriptionObject = {
+									  Protocol: 'application',
+									  TopicArn: 'arn:aws:sns:us-east-1:370339223087:app/APNS/USF_Athletics_Production',
+									  Endpoint: data.EndpointArn
+									  };
+								  sns.subscribe(subscriptionObject, function(err, data){
+									  if(err){
+										  console.log("CAN'T SUBSCRIBE");
+										  console.log(err);
+										  }
+									  });
+							  } 
+							});
+					}
+				break;
 			
+				case 'message':
+					
+					console.log("We got a message, woo hoo!");
+					// if this flag is set, this notification happened while we were in the foreground.
+					// you might want to play a sound to get the user's attention, throw up a dialog, etc.
+					if ( e.foreground )
+					{
+						navigator.notification.alert(e.payload.message);
+						// on Android soundname is outside the payload. 
+						// On Amazon FireOS all custom attributes are contained within payload
+						var soundfile = e.soundname || e.payload.sound;
+						// if the notification contains a soundname, play it.
+						var my_media = new Media("/android_asset/www/"+ soundfile);
+						my_media.play();
+					}
+					else
+					{  // otherwise we were launched because the user touched a notification in the notification tray.
+						if ( e.coldstart )
+						{
+							  navigator.notification.alert(e.payload.message);
+						}
+						else
+						{
+							 navigator.notification.alert(e.payload.message);
+						}
+					}
+					
+				   navigator.notification.alert(e.payload.message);
+					  
+					break;
+				
+					case 'error':
+					   navigator.notification.alert(e.msg);
+					break;
+				
+					default:
+						navigator.notification.alert("unknown error");
+					break;
+				  }
+				}
 			function tokenHandler (result) {
 			    var params = {
-				  PlatformApplicationArn: 'arn:aws:sns:us-east-1:370339223087:app/APNS_SANDBOX/USF_Athletics', // required
+				  PlatformApplicationArn: 'arn:aws:sns:us-east-1:370339223087:app/APNS/USF_Athletics_Production', // required
 				  Token: result // required
 				};
 				sns.createPlatformEndpoint(params, function(err, data) {
-								  if (err) {
-									  console.log("CAN'T CREATE PLATFORM ENDPOINT");
-									  console.log(err, err.stack);
-									  } 
-								  else{
-									  localStorage["ARN"] = data.EndpointArn;
-									  var subscriptionObject = {
-										  Protocol: 'application',
-										  TopicArn: 'arn:aws:sns:us-east-1:370339223087:USFAthletics_PushNotifications',
-										  Endpoint: data.EndpointArn
-										  };
-									  sns.subscribe(subscriptionObject, function(err, data){
-										  if(err){
-											  console.log("CAN'T SUBSCRIBE");
-											  console.log(err);
-											  }
-										  });
+					  if (err) {
+						  console.log("CAN'T CREATE PLATFORM ENDPOINT");
+						  console.log(err, err.stack);
+						  } 
+					  else{
+						  localStorage["ARN"] = data.EndpointArn;
+						  var subscriptionObject = {
+							  Protocol: 'application',
+							  TopicArn: 'arn:aws:sns:us-east-1:370339223087:USFAthletics_PushNotifications',
+							  Endpoint: data.EndpointArn
+							  };
+						  sns.subscribe(subscriptionObject, function(err, data){
+							  if(err){
+								  console.log("CAN'T SUBSCRIBE");
+								  console.log(err);
 								  }
+							  });
+					  }
 				});
 			}
 			
@@ -162,7 +238,6 @@
 			function getAjax(){
 					
 					var content = document.getElementById("content");
-				
 					var output = "";
 					
 					SportsAPI.getNews(
@@ -233,10 +308,27 @@
 						}
 					});
 					}
+			var table = new AWS.DynamoDB({params: {TableName: 'USFAthletics_AuthAdmins'}});
+			function verifyAdmin(){
+					table.scan({AttributesToGet:['AdminID'],ScanFilter:{Email:{ComparisonOperator:'EQ',AttributeValueList:[{S:localStorage["email"]}],}}},function(err,data){
+			if(err){
+				console.log(err);
+			}
+			else{
+				if(data.Items.length == 0){
+					$('#notificationButton').hide();
+				}
+				else{
+					$('#notificationButton').show();
+				}
+			}
+		});
+			}
 				
 			</script>
 			<script>
-			          getAjax();
+			verifyAdmin();
+			getAjax();
 					  
 			/*
 				This function takes in an id based upon the table row that
