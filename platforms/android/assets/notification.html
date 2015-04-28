@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>View Prayer</title>
+<meta name="viewport" width=device-width />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="jquery.mobile.structure-1.2.0.min.css">
+<link rel="stylesheet" href="jquery.mobile-1.4.0.min.css" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.mobile-1.4.0.min.js"></script>
+</head>
+<style>
+@font-face{
+	font-family:superclare;
+	src: url(SuperClarendon.ttc);
+	
+	} 
+.ui-dialog-contain{
+		max-height:400px !important;
+		}
+</style>
+<div id ="athleticsNotifications" data-role="dialog" style="background-color:black;">
+
+		<div data-role="header" class="header" data-theme="e" style="background-color:#edb32e;color:white;text-shadow:none;">
+			<h4 id="headerText" style="width:200px;width: 200px;margin:0 auto;">Notification</h4>
+		</div>
+
+		<div id = "content" data-role="content" data-theme="e" style="max-height:500px;">
+        <script src="js/aws-sdk.min.js"></script>
+        <script>
+		AWS.config.accessKeyId = localStorage["aki"];
+		AWS.config.secretAccessKey = localStorage["sk"];
+		AWS.config.sessionToken = localStorage["st"];
+		AWS.config.region = 'us-east-1';		var db = new AWS.DynamoDB();
+		var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+		var sns = new AWS.SNS();
+		
+		
+       </script>
+	   <script>	
+	function notify(){
+		var description = $('#details').val();
+		var params2 ={
+		Message: description,
+		MessageStructure: 'json',
+		Message:JSON.stringify({
+		"default": description,
+		"APNS":"{\"aps\":{\"alert\":\""+description+"\",\"sound\":\"default\",\"badge\":1}}",
+		"GCM":"{\"data\":{\"message\":\""+description+"\",\"msgcnt\":\"1\"}}"
+		}),
+		TopicArn:"arn:aws:sns:us-east-1:370339223087:USFAthletics_PushNotifications"
+		}
+		
+		sns.publish(params2,function(err,data){
+			if(err){
+				console.log("Error Publishing");
+				console.log(err);
+				}
+			else{
+				console.log("Sent Message");
+				 $.mobile.changePage('homepage.html', { transition: 'pop', role: 'page' });
+				
+				}
+		});
+	}
+		   </script>
+
+			   <textarea id="details" rows="1" style="max-height:50px;height:50px;" placeholder="Notification Message"></textarea>
+               <a href="#" onclick="notify()" id ="notifyAthletics" data-role="button" data-theme="c">Send Notification</a> 
+               <a href="homepage.html" onclick="" id ="cancel" data-transition="pop" data-role="button" data-theme="c">Cancel</a>  
+        	</div>
+		</div>
+	</div>
+
+
+<body>
+
+</body>
+</html>
+

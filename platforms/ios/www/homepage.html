@@ -59,7 +59,7 @@
 			    	<p>Property of the USF Athletic Department of the University of Saint Francis in Joliet, Illinois.</p>
 			    	<p>If you missed the swipe tutorial and would like to play it again, press the button below.</p>
 			        <a id="replayTut" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Replay Tutorial</a>
-					<p>Developed by USF Computer Science students.</p>
+					<p>Developed by USF Computer Science and Information Technology students.</p>
 			        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" style="width: 40%;">Close</a>
 			    </div>
 			</div>
@@ -108,13 +108,15 @@
 			
 			window.setTimeout(function(){
 				if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
-						pushNotification.register(successHandler, errorHandler, {"senderID":"1090696343696","ecb":"onNotification"});
+						pushNotification.register(successHandler, errorHandler, {"senderID":"1076009045992","ecb":"onNotification"});
 					} 
 					else {
 						console.log("TRYING TO REGISTER FOR PUSH");
 						pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	
 				}
 			},7000);
+			 function successHandler(){
+			 }
 			 function onNotification(e) {
 				switch(e.event)
 				{
@@ -135,12 +137,11 @@
 								  console.log("CAN'T CREATE PLATFORM ENDPOINT");
 								  console.log(err, err.stack);
 								  } 
-								  
 							  else{
 								  localStorage["ARN"] = data.EndpointArn;
 								  var subscriptionObject = {
 									  Protocol: 'application',
-									  TopicArn: 'arn:aws:sns:us-east-1:370339223087:app/APNS/USF_Athletics_Production',
+									  TopicArn: 'arn:aws:sns:us-east-1:370339223087:USFAthletics_PushNotifications',
 									  Endpoint: data.EndpointArn
 									  };
 								  sns.subscribe(subscriptionObject, function(err, data){
@@ -149,8 +150,8 @@
 										  console.log(err);
 										  }
 									  });
-							  } 
-							});
+					  			}
+							 });
 					}
 				break;
 			
