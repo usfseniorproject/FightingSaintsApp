@@ -108,7 +108,7 @@
 			
 			window.setTimeout(function(){
 				if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos' ) {
-						pushNotification.register(successHandler, errorHandler, {"senderID":"1090696343696","ecb":"onNotification"});
+						pushNotification.register(successHandler, errorHandler, {"senderID":"1076009045992","ecb":"onNotification"});
 					} 
 					else {
 						console.log("TRYING TO REGISTER FOR PUSH");
@@ -123,9 +123,10 @@
 				case 'registered':
 					if ( e.regid.length > 0 )
 					{
-						$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+						
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
+						
 						console.log("regID = " + e.regid);
 						  var params = {
 							  PlatformApplicationArn: 'arn:aws:sns:us-east-1:370339223087:app/GCM/USF_Athletics_Android', 
@@ -137,22 +138,23 @@
 								  console.log("CAN'T CREATE PLATFORM ENDPOINT");
 								  console.log(err, err.stack);
 								  } 
-								  
 							  else{
 								  localStorage["ARN"] = data.EndpointArn;
 								  var subscriptionObject = {
 									  Protocol: 'application',
-									  TopicArn: 'arn:aws:sns:us-east-1:370339223087:app/APNS/USF_Athletics_Production',
+									  TopicArn: 'arn:aws:sns:us-east-1:370339223087:USFAthletics_PushNotifications',
 									  Endpoint: data.EndpointArn
 									  };
+								  console.log("Subscription Object");
+								  console.log(subscriptionObject);
 								  sns.subscribe(subscriptionObject, function(err, data){
 									  if(err){
 										  console.log("CAN'T SUBSCRIBE");
 										  console.log(err);
 										  }
 									  });
-							  } 
-							});
+					  			}
+							 });
 					}
 				break;
 			
