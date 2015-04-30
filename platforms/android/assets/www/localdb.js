@@ -14,8 +14,6 @@ Rosters.webdb.createTable = function (){
 	var db = Rosters.webdb.db;
 	try{
 	db.transaction(function(e) {
-	var query = "DROP TABLE IF EXISTS m_bowling";
-    e.executeSql(query);
 	var query = "DROP TABLE IF EXISTS m_basketball";
     e.executeSql(query);
 	var query = "DROP TABLE IF EXISTS w_basketball";
@@ -56,8 +54,6 @@ Rosters.webdb.createTable = function (){
     var query = "DROP TABLE IF EXISTS cheerleading";
     e.executeSql(query);
 	
-	
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS m_basketball(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS w_basketball(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
 	e.executeSql("CREATE TABLE IF NOT EXISTS m_soccer(ID INTEGER PRIMARY KEY ASC,Name TEXT,Player_Number TEXT,Class_Name TEXT,Position TEXT,Height TEXT, Weight TEXT, Hometown TEXT, OurID TEXT, picLink TEXT)", []);
@@ -83,11 +79,12 @@ Rosters.webdb.createTable = function (){
 	Rosters.webdb.onSuccess,
 	Rosters.webdb.onError
 	);
-	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC, Number INTEGER, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	e.executeSql("CREATE TABLE IF NOT EXISTS m_bowling(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
 	Rosters.webdb.onSuccess,
 	Rosters.webdb.onError
 	);
-	e.executeSql("CREATE TABLE IF NOT EXISTS w_bowling(ID INTEGER PRIMARY KEY ASC, Number INTEGER, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
+	
+	e.executeSql("CREATE TABLE IF NOT EXISTS w_bowling(ID INTEGER PRIMARY KEY ASC, Name TEXT, Class_Name TEXT, Hometown TEXT, picLink TEXT)", [],
 	Rosters.webdb.onSuccess,
 	Rosters.webdb.onError
 	);
@@ -138,15 +135,7 @@ Rosters.webdb.addRoster = function (pname,pnumber,cname,pos,pheight,pweight,oid,
 	var ourid = oid;
 	var tableName = localStorage["tableName"]
 	
-	if(tableName == "m_bowling"){
-		console.log("Adding things to the database");
-		db.transaction(function(e){
-			e.executeSql("INSERT INTO m_bowling(Name,Player_Number,Class_Name,Hometown,OurID,picLink) VALUES (?,?,?,?,?,?)",
-				[name,player_number,class_name,hometown,ourid,picLink],
-				Rosters.webdb.onSuccess,
-				Rosters.webdb.onError)
-		});	
-	}
+	
 	if(tableName == "m_basketball"){
 	db.transaction(function(e){
 		

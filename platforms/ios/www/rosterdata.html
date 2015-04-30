@@ -151,8 +151,8 @@
 								var cname = json[i]["Class"];
 								var htown= json[i]["Hometown"];
 								var picLink = json[i]["Picture"];
-								addRoster(pname,pnumber,cname,"","","",oid,htown,picLink);
-								//third double quote is "cname"
+								addRoster(pname,"",cname,"","","","",htown,picLink);
+								console.log(i);
 								
 								var className = "";
 								if(json[i]["Class"] == "SR"){
@@ -197,7 +197,7 @@
 								var cname = json[i]["Class"];
 								var htown= json[i]["Hometown"];
 								var picLink = json[i]["Picture"];
-								addRoster(pname,pnumber,cname,"","",cname,oid,htown,picLink);
+								addRoster(pname,pnumber,"","","","","",htown,picLink);
 								
 								var className = "";
 								if(json[i]["Class"] == "SR"){

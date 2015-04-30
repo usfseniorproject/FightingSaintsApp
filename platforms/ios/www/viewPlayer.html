@@ -34,7 +34,7 @@
 				// This function changes the page back to the home page
 				
 				function changeBack (){
-					alert("Prayer Request Successfully Removed");
+					
 					$.mobile.changePage('homepage.html', { transition: 'pop', role: 'page' });
 					
 				}
@@ -50,7 +50,7 @@
 						
 					}
 					//var count = localStorage["count"]; 
-					headerText.innerHTML = "#" + num + " " + rs.rows.item(0).Name;
+					$('#headerText').text("#" + num + " " + rs.rows.item(0).Name);
 					switch(localStorage["tableName"]){
 						case "m_bowling":
 							$('#Position').hide();
@@ -115,7 +115,6 @@
 					var weight = rs.rows.item(0).Weight;
 					var height = rs.rows.item(0).Height;
 					var className = rs.rows.item(0).Class_Name;
-					console.log(rs.rows.item(0).picLink);
 					var picLink = rs.rows.item(0).picLink;
 					var temp = "";
 					var temp2 = "";
